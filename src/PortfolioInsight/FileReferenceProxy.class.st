@@ -17,6 +17,12 @@ FileReferenceProxy class >> on: aFileReference [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> allChildrenMatching: aRegExp [
+	^ (component allChildrenMatching: aRegExp)
+		collect: [:each | FileReferenceProxy on: each]
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> allFiles [
 	^ component allFiles
 		collect: [ :each| self class on: each ]
@@ -80,4 +86,9 @@ FileReferenceProxy >> extension [
 
 { #category : #accessing }
 FileReferenceProxy >> resolve [
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> solutionProxies [
+	^ component allChildrenMatching: '*.sln'.
 ]
