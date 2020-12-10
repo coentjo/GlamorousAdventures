@@ -27,6 +27,11 @@ FileReferenceProxy >> assertEmptyView: aView [
 	self assert: aView topStep root children isEmpty.
 ]
 
+{ #category : #'as yet unclassified' }
+FileReferenceProxy >> basename [
+	^ component basename
+]
+
 { #category : #accessing }
 FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 	"inspi comes from: GtMondrianClassHierarchyExamples"
@@ -37,17 +42,16 @@ FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 	view nodes
 		shape: [ :aClass |
 			BlTextElement new
-				text: aClass name asRopedText.
-				"border: (BlBorder paint: Color gray width: 1);"
-				"constraintsDo: [ :c |
-					c padding: (BlInsets all: 1) ]" ]; 
+				text: aClass name asRopedText ]; 
 		with: targetClass withAllSubclasses.
-	"view edges
-		fromRightCenter;
-		toLeftCenter;
-		connectToAll: #subclasses."
+
 	view layout horizontalTree.
 	^view
+]
+
+{ #category : #'as yet unclassified' }
+FileReferenceProxy >> component [
+	^ component
 ]
 
 { #category : #accessing }
