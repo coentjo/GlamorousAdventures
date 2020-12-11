@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		's',
-		'component'
+		'component',
+		'children',
+		'parent'
 	],
 	#category : #PortfolioInsight
 }
@@ -14,6 +16,34 @@ FileReferenceProxy class >> on: aFileReference [
 		component: aFileReference;
 		yourself
 
+]
+
+{ #category : #'as yet unclassified' }
+FileReferenceProxy >> addChildrenMatching: aString [ 
+	self shouldBeImplemented.
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> adoptAllChildrenMatching: aRegExp [
+	^ (self allChildrenMatching: aRegExp) 
+		do: [:child | self adoptChild: child];
+		yourself 
+	
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> adoptAllChildrenMatching: aRegExp lookIn: aDirectory [
+	^ (aDirectory allChildrenMatching: aRegExp) 
+		do: [:child | self adoptChild: child];
+		yourself 
+	
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> adoptChild: child [ 
+	child class = FileReferenceProxy ifFalse: [self error: 'Child of a proxy should be a proxy too.'].
+	child parent: self.
+	self children add: child
 ]
 
 { #category : #accessing }
@@ -39,6 +69,11 @@ FileReferenceProxy >> basename [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> children [
+	^ children ifNil: [children := OrderedCollection new]
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 	"inspi comes from: GtMondrianClassHierarchyExamples"
 	<gtExample>
@@ -55,9 +90,9 @@ FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 	^view
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FileReferenceProxy >> component [
-	^ component
+	^ component ifNil: [self error: self class asString, ' without a component.']
 ]
 
 { #category : #accessing }
@@ -82,6 +117,33 @@ FileReferenceProxy >> entry [
 { #category : #accessing }
 FileReferenceProxy >> extension [
 	^ component extension
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> interestingChildren [
+	| projects interesting subProjects |
+	"projects (.sln), subprojects (.csproj), sourceFiles (.cs)"
+	projects := self adoptAllChildrenMatching: '*.sln'.
+	interesting := { self } , projects.
+	"Add subprojects (*.csproj)"
+	subProjects := OrderedCollection new.
+	projects do: [:subproject | subProjects addAll: 
+		(subproject adoptAllChildrenMatching: '*.csProj' lookIn: subproject parent)]. 
+	^ interesting ,subProjects .
+
+"projects do: [:project | project children do: [:subproject | subproject adoptAllChildrenMatching: '*.csProj']"
+"csProjProxies := rootProxy allChildrenMatching: '*.csProj'."
+"csProxies :=  adoptAllChildrenMatching: '*.cs'."
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> parent [
+	^ parent
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> parent: aProxy [
+	parent := aProxy
 ]
 
 { #category : #accessing }
