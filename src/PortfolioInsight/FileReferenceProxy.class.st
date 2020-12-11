@@ -120,6 +120,20 @@ FileReferenceProxy >> extension [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> gtAsMondrian [
+	| m |
+	m := GtMondrian new.
+	m nodes 
+		stencil: [ :each | BlTextElement new
+			text: each basename asRopedText; 
+			background: Color green ];
+		with: self interestingChildren.
+	m edges connectFrom: #parent.
+	m layout horizontalTree.
+	^ m
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> interestingChildren [
 	| projects interesting subProjects |
 	"projects (.sln), subprojects (.csproj), sourceFiles (.cs)"
