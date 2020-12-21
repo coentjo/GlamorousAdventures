@@ -36,7 +36,8 @@ FileReferenceProxy >> adoptAllChildrenMatching: aRegExp [
 
 { #category : #accessing }
 FileReferenceProxy >> adoptAllChildrenMatching: aRegExp lookIn: aDirectory [
-	^ (aDirectory allChildrenMatching: aRegExp) 
+	^ ((aDirectory allChildrenMatching: aRegExp) 
+		collect: [:each | FileReferenceProxy on: each ])
 		do: [:child | self adoptChild: child];
 		yourself 
 	
@@ -45,11 +46,7 @@ FileReferenceProxy >> adoptAllChildrenMatching: aRegExp lookIn: aDirectory [
 { #category : #accessing }
 FileReferenceProxy >> adoptChild: child [
 	| adoptee | 
-	adoptee := child. 
-	child class = FileReferenceProxy 
-		ifFalse: [
-			adoptee := FileReferenceProxy on: adoptee
-			"self error: 'Child of a proxy should be a proxy too.'"].
+	adoptee := FileReferenceProxy on: child. 
 	adoptee parent: self.
 	self children add: adoptee
 ]
