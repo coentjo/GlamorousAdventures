@@ -11,7 +11,10 @@ Class {
 }
 
 { #category : #accessing }
-FileReferenceProxy class >> on: aFileReference [ 
+FileReferenceProxy class >> on: aFileReference [
+	"proxy for proxy will be the proxy itself!"
+	aFileReference class = FileReferenceProxy
+		ifTrue: [ ^ aFileReference ]. 
 	^ self new 
 		component: aFileReference;
 		yourself
@@ -40,10 +43,15 @@ FileReferenceProxy >> adoptAllChildrenMatching: aRegExp lookIn: aDirectory [
 ]
 
 { #category : #accessing }
-FileReferenceProxy >> adoptChild: child [ 
-	child class = FileReferenceProxy ifFalse: [self error: 'Child of a proxy should be a proxy too.'].
-	child parent: self.
-	self children add: child
+FileReferenceProxy >> adoptChild: child [
+	| adoptee | 
+	adoptee := child. 
+	child class = FileReferenceProxy 
+		ifFalse: [
+			adoptee := FileReferenceProxy on: adoptee
+			"self error: 'Child of a proxy should be a proxy too.'"].
+	adoptee parent: self.
+	self children add: adoptee
 ]
 
 { #category : #accessing }
