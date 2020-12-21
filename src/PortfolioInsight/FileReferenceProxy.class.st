@@ -101,6 +101,11 @@ FileReferenceProxy >> component: aFileReference [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> componentParent [
+	^ self component parent
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> emptyView [
 	<gtExample>
 	| view |
@@ -140,10 +145,12 @@ FileReferenceProxy >> interestingChildren [
 	projects := self adoptAllChildrenMatching: '*.sln'.
 	interesting := { self } , projects.
 	"Add subprojects (*.csproj)"
-	subProjects := OrderedCollection new.
-	projects do: [:subproject | subProjects addAll: 
-		(subproject adoptAllChildrenMatching: '*.csProj' lookIn: subproject parent)]. 
-	^ interesting ,subProjects .
+	projects do: [:subproject |
+		subProjects := OrderedCollection new. 
+		subProjects addAll: 
+			(subproject adoptAllChildrenMatching: '*.csProj' lookIn: subproject componentParent ).
+		interesting := interesting , subProjects	 ]. 
+	^ interesting 
 
 "projects do: [:project | project children do: [:subproject | subproject adoptAllChildrenMatching: '*.csProj']"
 "csProjProxies := rootProxy allChildrenMatching: '*.csProj'."
@@ -158,6 +165,14 @@ FileReferenceProxy >> parent [
 { #category : #accessing }
 FileReferenceProxy >> parent: aProxy [
 	parent := aProxy
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> printOn: aStream [
+	aStream 
+		nextPutAll: 'Proxy for '.
+	self component printOn: aStream.
+	
 ]
 
 { #category : #accessing }
