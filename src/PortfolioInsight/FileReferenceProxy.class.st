@@ -96,6 +96,18 @@ FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> collectAndAdoptSubprojectsOf: project [ 
+	| subProjects |
+	subProjects := OrderedCollection new.
+	subProjects addAll: 
+		(project 
+			adoptAllChildrenMatching: '*.csProj' 
+			lookIn: project componentParent).
+	subProjects class = OrderedCollection ifFalse: [self halt] .
+	^ subProjects
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> component [
 	^ component ifNil: [self error: self class asString, ' without a component.']
 ]
@@ -145,21 +157,19 @@ FileReferenceProxy >> gtAsMondrian [
 
 { #category : #accessing }
 FileReferenceProxy >> interestingChildren [
-	| projects interesting subProjects |
+	| projects interesting |
 	"projects (.sln), subprojects (.csproj), sourceFiles (.cs)"
 	projects := self adoptAllChildrenMatching: '*.sln'.
-	interesting := { self } , projects.
+	interesting :=  OrderedCollection new.
+	interesting 
+		add: self; 
+		addAll: projects.
 	"Add subprojects (*.csproj)"
-	projects do: [:subproject |
-		subProjects := OrderedCollection new. 
-		subProjects addAll: 
-			(subproject adoptAllChildrenMatching: '*.csProj' lookIn: subproject componentParent ).
-		interesting := interesting , subProjects	 ]. 
-	^ interesting 
-
-"projects do: [:project | project children do: [:subproject | subproject adoptAllChildrenMatching: '*.csProj']"
-"csProjProxies := rootProxy allChildrenMatching: '*.csProj'."
-"csProxies :=  adoptAllChildrenMatching: '*.cs'."
+	projects
+		do: [ :project | 			
+			interesting addAll: 
+				(self collectAndAdoptSubprojectsOf: project) ].
+	^ interesting
 ]
 
 { #category : #accessing }
