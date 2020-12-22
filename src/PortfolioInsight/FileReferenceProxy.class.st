@@ -27,6 +27,14 @@ FileReferenceProxy >> addChildrenMatching: aString [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> adoptAllChildSourcesMatching: aRegExp lookIn: aFileReference [ 
+	^ ((aFileReference allChildrenMatching: aRegExp)
+		collect: [:each | FileReferenceProxy on: each ])
+		do: [:child | self adoptChild: child ];
+		yourself
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> adoptAllChildrenMatching: aRegExp [
 	^ (self allChildrenMatching: aRegExp) 
 		do: [:child | self adoptChild: child];
@@ -96,6 +104,16 @@ FileReferenceProxy >> classHierarchyHorizontalTreeWithClassNames [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> collectAndAdoptSourceOf: subproject [ 
+	| sources |
+	sources := OrderedCollection new.
+	sources addAll: (subproject
+		adoptAllChildSourcesMatching: '*.cs'
+		lookIn: subproject componentParent).
+	^ sources
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> collectAndAdoptSubprojectsOf: project [ 
 	| subProjects |
 	subProjects := OrderedCollection new.
@@ -103,7 +121,9 @@ FileReferenceProxy >> collectAndAdoptSubprojectsOf: project [
 		(project 
 			adoptAllChildrenMatching: '*.csProj' 
 			lookIn: project componentParent).
-	subProjects class = OrderedCollection ifFalse: [self halt] .
+	"Add sources (*.cs)"
+	subProjects do: [:subproject |
+		subProjects addAll: (self collectAndAdoptSourceOf: subproject) ] .
 	^ subProjects
 ]
 
