@@ -15,6 +15,12 @@ FileReferenceProxy class >> on: aFileReference [
 	"proxy for proxy will be the proxy itself!"
 	aFileReference class = FileReferenceProxy
 		ifTrue: [ ^ aFileReference ]. 
+	"proxy for zip-file will be a proxy on the root-FileReference"
+	aFileReference extension = 'zip'
+		ifTrue: [ | fileRef |
+			fileRef := (FileSystem zip: aFileReference) open workingDirectory.
+			^ FileReferenceProxy on: fileRef ].
+	"or else just create a proxy on the FileReference"
 	^ self new 
 		component: aFileReference;
 		yourself
@@ -169,7 +175,7 @@ FileReferenceProxy >> gtAsMondrian [
 	m nodes 
 		stencil: [ :each | BlTextElement new
 			text: each basename asRopedText; 
-			background: Color green ];
+			background: each insightColor ];
 		with: self interestingChildren.
 	m edges connectFrom: #parent.
 	m layout horizontalTree.
@@ -192,6 +198,19 @@ FileReferenceProxy >> gtStyledCodeFor: aView [
 		styler: styler;
 		look: BrGlamorousCodeEditorLook;
 		text: [ component contents asRopedText ]
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> insightColor [
+	| extensionColors |
+	extensionColors := Dictionary 
+		with:'cs' -> Color green
+		with: 'csproj' -> Color orange 
+		with: 'sln' -> Color red .
+	^ extensionColors 
+		at: self extension 
+		ifAbsent: [Color gray] 
+
 ]
 
 { #category : #accessing }
