@@ -28,10 +28,11 @@ FileReferenceProxy >> addChildrenMatching: aString [
 
 { #category : #accessing }
 FileReferenceProxy >> adoptAllChildSourcesMatching: aRegExp lookIn: aFileReference [ 
-	^ ((aFileReference allChildrenMatching: aRegExp)
-		collect: [:each | FileReferenceProxy on: each ])
-		do: [:child | self adoptChild: child ];
-		yourself
+	| col |
+	col := ((aFileReference allChildrenMatching: aRegExp)
+			collect: [:each | FileReferenceProxy on: each ]).
+	col do: [:child | self adoptChild: child ].
+	^ col
 ]
 
 { #category : #accessing }
@@ -173,6 +174,24 @@ FileReferenceProxy >> gtAsMondrian [
 	m edges connectFrom: #parent.
 	m layout horizontalTree.
 	^ m
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> gtStyledCodeFor: aView [
+	<gtView>
+	| parser styler |
+	component := self component. 
+	(component isFile
+		and: [ (parser := SmaCCParser allSubclasses
+				detect: [ :each | each fileExtensions includes: '.' , self extension ]
+				ifNone: [  ]) notNil and: [ (styler := parser gtStyler) notNil ] ])
+		ifFalse: [ ^ aView empty ].
+	^ aView textEditor
+		title: 'Code';
+		priority: 10;
+		styler: styler;
+		look: BrGlamorousCodeEditorLook;
+		text: [ component contents asRopedText ]
 ]
 
 { #category : #accessing }
