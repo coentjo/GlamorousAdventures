@@ -1,3 +1,10 @@
+"
+This class makes it possible to store feedback to FileReference objects (files, especially source files). 
+Created to be able to look at zip files from students containing program source files. This way it is possible to store the feedback beside the zip. 
+
+To use it create a proxy for a FileReference by inspecting: 
+FileReferenceProxy on: aFileRef
+"
 Class {
 	#name : #FileReferenceProxy,
 	#superclass : #Object,
