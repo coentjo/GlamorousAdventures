@@ -12,7 +12,8 @@ Class {
 		's',
 		'component',
 		'children',
-		'parent'
+		'parent',
+		'feedback'
 	],
 	#category : #PortfolioInsight
 }
@@ -37,6 +38,11 @@ FileReferenceProxy class >> on: aFileReference [
 { #category : #'as yet unclassified' }
 FileReferenceProxy >> addChildrenMatching: aString [ 
 	self shouldBeImplemented.
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> addFeedback: aFeedbackItem [
+	self feedback add: aFeedbackItem
 ]
 
 { #category : #accessing }
@@ -176,6 +182,11 @@ FileReferenceProxy >> extension [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> feedback [
+	^ feedback ifNil: [feedback := OrderedCollection new]
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> gtAsMondrian [
 	| m |
 	m := GtMondrian new.
@@ -203,8 +214,17 @@ FileReferenceProxy >> gtStyledCodeFor: aView [
 		title: 'Code';
 		priority: 10;
 		styler: styler;
+		actionButtonLabel: 'Add feedback'
+			action: [self addFeedback: (FeedbackItem on: self) ] ;
 		look: BrGlamorousCodeEditorLook;
-		text: [ component contents asRopedText ]
+		text: [ | stream | 
+			stream := WriteStream on: String new.
+			stream nextPutAll: ' --- Feedback --- '; cr.
+			self feedback do: [:fb | 
+				stream nextPutAll: fb printString; cr].
+			stream nextPutAll: ' --- about: ---'; cr.
+			stream nextPutAll: component contents; cr.
+			component contents asRopedText ]
 ]
 
 { #category : #accessing }

@@ -3,10 +3,19 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'text',
-		'about'
+		'about',
+		'timeStamp'
 	],
 	#category : #PortfolioInsight
 }
+
+{ #category : #accessing }
+FeedbackItem class >> on: anObject [ 
+	^ self new 
+		about: anObject;
+		datetime: DateAndTime now;
+		yourself
+]
 
 { #category : #accessing }
 FeedbackItem class >> text: aFeedbackText about: aContentText [
@@ -18,6 +27,11 @@ FeedbackItem class >> text: aFeedbackText about: aContentText [
 
 { #category : #accessing }
 FeedbackItem >> about: aContentText [ 
+]
+
+{ #category : #accessing }
+FeedbackItem >> datetime: aDateAndTime [
+	timeStamp := aDateAndTime
 ]
 
 { #category : #accessing }
