@@ -10,4 +10,8 @@ After my
 
 ![example](figures/portfolio.mondrian.png)
 
+or, with source of one file opened:
+![example](figures/portfolio.mondrianAndCs.png)
+
+
 ## What would be an easy way to give/store this feedback?
