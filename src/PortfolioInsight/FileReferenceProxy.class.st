@@ -81,7 +81,10 @@ FileReferenceProxy >> adoptChild: child [
 
 { #category : #accessing }
 FileReferenceProxy >> ageInDays [
-	^'4d'
+	| d d2 |
+	d := self component .
+	d2 := d modificationTime .
+	^ d2 monthName, d2 dayOfMonth asString
 ]
 
 { #category : #accessing }
@@ -247,7 +250,11 @@ FileReferenceProxy >> insightColor [
 
 { #category : #accessing }
 FileReferenceProxy >> insightName [
-	^ (self ageInDays asString, ' ', self basename) asRopedText
+	^ self component isFile
+		ifTrue: [ self ageInDays asString, ' ', self basename] 
+		ifFalse: [ self basename]
+			asRopedText
+	
 ]
 
 { #category : #accessing }
