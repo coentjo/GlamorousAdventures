@@ -80,6 +80,11 @@ FileReferenceProxy >> adoptChild: child [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> ageInDays [
+	^'4d'
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> allChildrenMatching: aRegExp [
 	^ (component allChildrenMatching: aRegExp)
 		collect: [:each | FileReferenceProxy on: each]
@@ -192,7 +197,7 @@ FileReferenceProxy >> gtAsMondrian [
 	m := GtMondrian new.
 	m nodes 
 		stencil: [ :each | BlTextElement new
-			text: each basename asRopedText; 
+			text: each insightName asRopedText; 
 			background: each insightColor ];
 		with: self interestingChildren.
 	m edges connectFrom: #parent.
@@ -238,6 +243,11 @@ FileReferenceProxy >> insightColor [
 		at: self extension 
 		ifAbsent: [Color gray] 
 
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> insightName [
+	^ (self ageInDays asString, ' ', self basename) asRopedText
 ]
 
 { #category : #accessing }
