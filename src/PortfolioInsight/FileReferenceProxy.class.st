@@ -88,6 +88,19 @@ FileReferenceProxy >> ageInDays [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> ageInWholeDays [
+	^ self ageOfFile asDays truncated
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> ageOfFile [
+
+	^ (Timespan
+	   starting: self fileTimestampForVisualizer
+	   ending: DateAndTime now) asDuration 
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> allChildrenMatching: aRegExp [
 	^ (component allChildrenMatching: aRegExp)
 		collect: [:each | FileReferenceProxy on: each]
@@ -104,9 +117,9 @@ FileReferenceProxy >> assertEmptyView: aView [
 	self assert: aView topStep root children isEmpty.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 FileReferenceProxy >> basename [
-	^ component basename
+	^ self component basename
 ]
 
 { #category : #accessing }
@@ -171,6 +184,12 @@ FileReferenceProxy >> componentParent [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> dirVisualizerTime [
+
+	^ self component modificationTime
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> emptyView [
 	<gtExample>
 	| view |
@@ -195,13 +214,21 @@ FileReferenceProxy >> feedback [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> fileTimestampForVisualizer [
+
+	^ self isDirectory
+		  ifTrue: [ self dirVisualizerTime ]
+		  ifFalse: [ self component modificationTime ]
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> gtAsMondrian [
 	| m |
 	m := GtMondrian new.
 	m nodes 
 		stencil: [ :each | BlTextElement new
 			text: each insightName asRopedText; 
-			background: each insightColor ];
+			background: each insightColorAdjustedForAge  ];
 		with: self interestingChildren.
 	m edges connectFrom: #parent.
 	m layout horizontalTree.
@@ -249,6 +276,11 @@ FileReferenceProxy >> insightColor [
 ]
 
 { #category : #accessing }
+FileReferenceProxy >> insightColorAdjustedForAge [
+	^ self insightColor colorAdjustedForAge: self ageInWholeDays
+]
+
+{ #category : #accessing }
 FileReferenceProxy >> insightName [
 	^ self component isFile
 		ifTrue: [ self ageInDays asString, ' ', self basename] 
@@ -265,13 +297,20 @@ FileReferenceProxy >> interestingChildren [
 	interesting :=  OrderedCollection new.
 	interesting 
 		add: self; 
-		addAll: projects.
+		addAll: projects ";
+		addAll: (self adoptAllChildrenMatching: '*.txt');
+		addAll: ((self adoptAllChildrenMatching: '*.md')) ".
 	"Add subprojects (*.csproj)"
 	projects
 		do: [ :project | 			
 			interesting addAll: 
 				(self collectAndAdoptSubprojectsOf: project) ].
 	^ interesting
+]
+
+{ #category : #accessing }
+FileReferenceProxy >> isDirectory [
+	^ self component isDirectory
 ]
 
 { #category : #accessing }
