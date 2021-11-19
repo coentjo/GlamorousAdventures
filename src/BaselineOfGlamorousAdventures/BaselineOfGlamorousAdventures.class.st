@@ -8,7 +8,7 @@ Class {
 BaselineOfGlamorousAdventures >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
-		spec 
+		"spec 
 			baseline: 'GToolkitPager' with: [
 				spec repository: 'github://feenkcom/gtoolkit-pager:main/src' ];
 			baseline: 'GToolkitSpotter' with: [
@@ -18,9 +18,8 @@ BaselineOfGlamorousAdventures >> baseline: spec [
 			baseline: 'GToolkit4Pharo' with: [
 				spec repository: 'github://feenkcom/gt4pharo:main/src' ];
 			baseline: 'GToolkitExamples' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:main/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-examples:main/src' ]."
 				
-		spec package: 'PortfolioInsight' with: [
-				spec requires: #('GToolkitPager' 'GToolkitSpotter' 'GToolkitCompleter' 'GToolkit4Pharo' 'GToolkitExamples'). ]. ].
+		spec package: 'PortfolioInsight' ].
 
 ]
