@@ -5,9 +5,33 @@ Class {
 }
 
 { #category : #accessing }
+NOSScraper >> exampleGetContentOf [
+| partLink url |
+partLink := (self at: 1).
+url := 'https://nos.nl', partLink . 
+ZnClient new
+	url: url;
+	get
+]
+
+{ #category : #accessing }
+NOSScraper >> exampleGetContentOfOneFile [
+
+	<gtExample>
+	<noTest>
+	| partLink url |
+	partLink := self exampleLinksInOneFile at: 1.
+	url := 'https://nos.nl' , partLink.
+	^ ZnClient new
+		url: url;
+		get
+]
+
+{ #category : #accessing }
 NOSScraper >> exampleLinksInOneFile [
 
 	<gtExample>
+	<noTest>
 	| contents linkLines regExp exampleLine links |
 	contents := self exampleOneFile.
 	"exampleLine '<a href=""/artikel/2362745-dode-gevonden-na-aardverschuiving-noorwegen"" class=""link-block"">'."
