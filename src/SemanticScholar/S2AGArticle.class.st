@@ -27,14 +27,6 @@ S2AGArticle class >> on: someRawData [
 ]
 
 { #category : #accessing }
-S2AGArticle >> at: aStringOrSymbol default: aDefaultStringOrSymbol [
-^
-	rawData
-		ifNil: aDefaultStringOrSymbol asSymbol
-		ifNotNil: [ :data | data at: aStringOrSymbol asSymbol ifAbsent: aDefaultStringOrSymbol asSymbol ]
-]
-
-{ #category : #accessing }
 S2AGArticle >> authorsYear [
 	^ rawData ifNotNil: [ :data | data at: 'authorsYear' ifAbsent: 0] ifNil: ['']
 ]

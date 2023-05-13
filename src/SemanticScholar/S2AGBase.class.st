@@ -9,6 +9,14 @@ Class {
 }
 
 { #category : #accessing }
+S2AGBase >> at: aStringOrSymbol default: aDefaultStringOrSymbol [
+^
+	symbolizedRawData
+		ifNil: aDefaultStringOrSymbol asSymbol
+		ifNotNil: [ :data | data at: aStringOrSymbol asSymbol ifAbsent: aDefaultStringOrSymbol asSymbol ]
+]
+
+{ #category : #accessing }
 S2AGBase >> atSym: aKey putSym: aValue [
 	self symbolizedRawData at: aKey put: aValue
 ]
