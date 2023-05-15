@@ -1,24 +1,13 @@
-"
-# wKLDJHFKJSDHF
-SDFG
-DSFGDSFG
-
-"
 Class {
 	#name : #S2AGArticle,
 	#superclass : #S2AGBase,
-	#instVars : [
-		'paperId',
-		'title'
-	],
 	#category : #SemanticScholar
 }
 
 { #category : #accessing }
 S2AGArticle class >> citedPaper: aCitedPaperDictionary [
 	^ self new
-		paperId: ( aCitedPaperDictionary at: 'paperId');
-		title: ( aCitedPaperDictionary at: 'title')
+		rawData: aCitedPaperDictionary
 ]
 
 { #category : #accessing }
@@ -59,15 +48,7 @@ S2AGArticle >> gtRefsFor: aView [
 
 { #category : #accessing }
 S2AGArticle >> paperId [
-	^ paperId ifNil: [ 
-		rawData 
-			at: 'id' 
-			ifAbsent: [ rawData halt ] ]
-]
-
-{ #category : #accessing }
-S2AGArticle >> paperId: aPaperId [
-	paperId := aPaperId asSymbol 
+	^ symbolizedRawData at: #paperId ifAbsent: [ symbolizedRawData at: #id ]
 ]
 
 { #category : #accessing }
@@ -80,31 +61,21 @@ S2AGArticle >> printOn: aStream [
 		nextPutAll: (self at: #title default: #'?');
 		nextPut: Character cr;
 		nextPutAll: '[';
-		nextPutAll: (self at: #paperId default: #'?');
-		nextPutAll: ']'
-]
-
-{ #category : #accessing }
-S2AGArticle >> rawData: someRawData [ 
-	rawData := someRawData
+		nextPutAll: (self paperId);
+		nextPutAll: ']';
+		nextPut: Character cr";
+		nextPutAll: '[refs:';
+		nextPutAll: (self referencedpapers size asString);
+		nextPutAll: ']'"
 ]
 
 { #category : #accessing }
 S2AGArticle >> referencedpapers [
 	| json array url |
-	url := 'https://api.semanticscholar.org/graph/v1/paper/649def34f8be52c8b66281af98ae884c09aef38b/references'.
+	url := 'https://api.semanticscholar.org/graph/v1/paper/',
+		self paperId asString,
+		'/references'.
 	json := ZnClient new get: url.
 	array := (STON fromString: json) at: 'data'.
 	^ array collect: [ :dict | S2AGArticle citedPaper: (dict at: 'citedPaper') ]
-]
-
-{ #category : #accessing }
-S2AGArticle >> title [
-	^ self at: #title default: #'?'
-]
-
-{ #category : #accessing }
-S2AGArticle >> title: aString [
-	title := aString
-	
 ]

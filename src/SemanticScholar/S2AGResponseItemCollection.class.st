@@ -9,18 +9,13 @@ Class {
 
 { #category : #accessing }
 S2AGResponseItemCollection >> addResponseItemFor: match [ 
-	self responseItems add: (SS2AGResponseItem for: match)
-]
-
-{ #category : #accessing }
-S2AGResponseItemCollection >> authorsYear [
-	^ rawData at: 'authorsYear'
+	self responseItems add: (S2AGArticle  on: match)
 ]
 
 { #category : #accessing }
 S2AGResponseItemCollection >> exampleQueryFakenews [
 	<gtExample>
-	| query url json |
+	| query url json rawData |
 	query := 'fakenews'.
 	url := 'https://api.semanticscholar.org/graph/v1/paper/autocomplete?query=', query.
 	json := ZnClient new get: url.
@@ -57,9 +52,4 @@ S2AGResponseItemCollection >> rawData: someRawData [
 { #category : #accessing }
 S2AGResponseItemCollection >> responseItems [
 	^ items ifNil: [ items := OrderedCollection new]
-]
-
-{ #category : #accessing }
-S2AGResponseItemCollection >> semanticId [
-	^ rawData at: 'id'
 ]

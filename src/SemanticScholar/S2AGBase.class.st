@@ -2,7 +2,6 @@ Class {
 	#name : #S2AGBase,
 	#superclass : #Object,
 	#instVars : [
-		'rawData',
 		'symbolizedRawData'
 	],
 	#category : #SemanticScholar
