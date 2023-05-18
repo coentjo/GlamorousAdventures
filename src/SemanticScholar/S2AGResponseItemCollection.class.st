@@ -1,6 +1,6 @@
 Class {
 	#name : #S2AGResponseItemCollection,
-	#superclass : #S2AGBase,
+	#superclass : #S2AGCollectionBase,
 	#instVars : [
 		'items'
 	],
@@ -15,12 +15,13 @@ S2AGResponseItemCollection >> addResponseItemFor: match [
 { #category : #accessing }
 S2AGResponseItemCollection >> exampleQueryFakenews [
 	<gtExample>
+	<script: 'self new exampleQueryFakenews'> 
 	| query url json rawData |
 	query := 'fakenews'.
 	url := 'https://api.semanticscholar.org/graph/v1/paper/autocomplete?query=', query.
 	json := ZnClient new get: url.
 	rawData := STON fromString: json.
-	^ S2AGResponseItemCollection new rawData: rawData
+	^ (self rawData: rawData) inspect
 ]
 
 { #category : #accessing }

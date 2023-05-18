@@ -17,7 +17,7 @@ S2AGArticle class >> on: someRawData [
 
 { #category : #accessing }
 S2AGArticle >> authorsYear [
-	^ rawData ifNotNil: [ :data | data at: 'authorsYear' ifAbsent: 0] ifNil: ['']
+	^ self at: #authorsYear default: nil
 ]
 
 { #category : #accessing }
