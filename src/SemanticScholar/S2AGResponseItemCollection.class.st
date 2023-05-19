@@ -2,7 +2,7 @@ Class {
 	#name : #S2AGResponseItemCollection,
 	#superclass : #S2AGCollectionBase,
 	#instVars : [
-		'items'
+		'articles'
 	],
 	#category : #SemanticScholar
 }
@@ -52,5 +52,5 @@ S2AGResponseItemCollection >> rawData: someRawData [
 
 { #category : #accessing }
 S2AGResponseItemCollection >> responseItems [
-	^ items ifNil: [ items := OrderedCollection new]
+	^ articles ifNil: [ articles := OrderedCollection new]
 ]
