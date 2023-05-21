@@ -1,5 +1,5 @@
 Class {
-	#name : #S2AGResponseItemCollection,
+	#name : #S2AGArticleCollection,
 	#superclass : #S2AGCollectionBase,
 	#instVars : [
 		'articles'
@@ -8,12 +8,12 @@ Class {
 }
 
 { #category : #accessing }
-S2AGResponseItemCollection >> addResponseItemFor: match [ 
+S2AGArticleCollection >> addResponseItemFor: match [ 
 	self responseItems add: (S2AGArticle  on: match)
 ]
 
 { #category : #accessing }
-S2AGResponseItemCollection >> exampleQueryFakenews [
+S2AGArticleCollection >> exampleQueryFakenews [
 	<gtExample>
 	<script: 'self new exampleQueryFakenews'> 
 	| query url json rawData |
@@ -25,7 +25,7 @@ S2AGResponseItemCollection >> exampleQueryFakenews [
 ]
 
 { #category : #accessing }
-S2AGResponseItemCollection >> gtItemsFor: aView [
+S2AGArticleCollection >> gtItemsFor: aView [
 	<gtView>
 	^ aView list
 		title: 'Matches';
@@ -34,7 +34,7 @@ S2AGResponseItemCollection >> gtItemsFor: aView [
 ]
 
 { #category : #accessing }
-S2AGResponseItemCollection >> printOn: aStream [
+S2AGArticleCollection >> printOn: aStream [
 	aStream
 		nextPutAll: self class name;
 		nextPutAll: ' (';
@@ -43,7 +43,7 @@ S2AGResponseItemCollection >> printOn: aStream [
 ]
 
 { #category : #accessing }
-S2AGResponseItemCollection >> rawData: someRawData [
+S2AGArticleCollection >> rawData: someRawData [
 	"A response gets an array of S2AGResponseItems"
 	(someRawData at: 'matches') do: [ :match | 
 		self addResponseItemFor: match ].
@@ -51,6 +51,6 @@ S2AGResponseItemCollection >> rawData: someRawData [
 ]
 
 { #category : #accessing }
-S2AGResponseItemCollection >> responseItems [
+S2AGArticleCollection >> responseItems [
 	^ articles ifNil: [ articles := OrderedCollection new]
 ]
