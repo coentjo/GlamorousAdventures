@@ -4,8 +4,18 @@ Class {
 	#instVars : [
 		'articles'
 	],
+	#classInstVars : [
+		'articlesCollection'
+	],
 	#category : #SemanticScholar
 }
+
+{ #category : #'as yet unclassified' }
+S2AGArticleCollection class >> allArticles [
+
+	^ articlesCollection ifNil: [
+		  articlesCollection := IdentityDictionary ]
+]
 
 { #category : #accessing }
 S2AGArticleCollection >> addResponseItemFor: match [ 
