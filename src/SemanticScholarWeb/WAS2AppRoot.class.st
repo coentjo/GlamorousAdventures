@@ -19,10 +19,9 @@ WAS2AppRoot class >> initialize [
 	| app |
 	app := WAAdmin register:  self asApplicationAt: 'papers'.
 	app
-		addLibrary: JQDeploymentLibrary ;
-		addLibrary: JQUiDeploymentLibrary.
-		"addLibrary: TBSDeployment""this was mentioned in TineBlogEN-gitc55a88d.pdf, 
-		but does not seem to exist?"  
+		addLibrary: SBSDevelopmentLibrary  ;
+		addLibrary: SBSExamplesLibrary .
+		
 ]
 
 { #category : #'class initialization' }
