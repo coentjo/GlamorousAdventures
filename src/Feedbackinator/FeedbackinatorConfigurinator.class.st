@@ -27,8 +27,3 @@ FeedbackinatorConfigurinator class >> from: aCollection chose: anInteger as: anO
 	config ifNil: [ config := Dictionary new].
 	config at: anOptionSymbol put: (aCollection at: anInteger)
 ]
-
-{ #category : #'as yet unclassified' }
-FeedbackinatorConfigurinator >> chat_guru [
-	
-]
