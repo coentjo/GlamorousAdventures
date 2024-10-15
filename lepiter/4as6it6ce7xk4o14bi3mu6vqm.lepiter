@@ -176,14 +176,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-15T11:39:24.923842+02:00"
+									"dateAndTimeString" : "2024-10-15T12:05:56.903622+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "eOTuJ+LgDQCF+ek8DMWfSA=="
 							},
-							"code" : "FileLocator home / '202408.cohort/sem8/Francois_Haan'"
+							"code" : "FileLocator home / 'tmpTestData/someplan.md'"
 						},
 						{
 							"__type" : "textSnippet",
