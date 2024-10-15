@@ -23,8 +23,9 @@ BaselineOfGlamorousAdventures class >> loadLepiter [
 { #category : #baselines }
 BaselineOfGlamorousAdventures >> baseline: spec [
 	<baseline>
-	
-	spec for: #'common' do: [				
-		spec package: #'PortfolioInsight' ].
-
+	spec
+		for: #common
+		do: [ spec
+				package: #PortfolioInsight;
+				package: #Feedbackinator ]
 ]

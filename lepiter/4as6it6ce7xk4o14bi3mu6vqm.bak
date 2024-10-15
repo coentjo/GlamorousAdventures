@@ -92,40 +92,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-15T11:15:48.829226+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-15T11:16:02.473151+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "1JzUIuLgDQCEe/nqDMWfSA=="
-				},
-				"code" : "\"Check if class already exists? \"\rHalt if: (Smalltalk at: BaselineOfGt4Llm ifPresent: _ put: _) ~= nil ."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2024-10-15T11:10:27.113341+02:00"
 					}
 				},
@@ -176,51 +142,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-15T12:04:43.431693+02:00"
+									"dateAndTimeString" : "2024-10-15T12:09:02.126302+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "eOTuJ+LgDQCF+ek8DMWfSA=="
 							},
-							"code" : "FileLocator home / 'someplan.md'"
-						},
-						{
-							"__type" : "textSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-15T11:18:18.403413+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-15T11:18:18.403413+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "peS+K+LgDQCG2eAaDMWfSA=="
-							},
-							"paragraphStyle" : {
-								"__type" : "textStyle"
-							},
-							"string" : ""
+							"code" : "FileLocator home / 'tmpTestData'"
 						},
 						{
 							"__type" : "textSnippet",
@@ -317,7 +246,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-15T11:18:29.978773+02:00"
+						"dateAndTimeString" : "2024-10-15T12:10:43.023952+02:00"
 					}
 				},
 				"uid" : {
@@ -327,7 +256,41 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Ask for feedback"
+				"string" : "# Ask for feedback locally (using Ollama) or online (ChatGPT)"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-15T12:09:34.997778+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-15T12:45:56.800116+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "fwQg4+LgDQC4KDlVDSi4Kw=="
+				},
+				"code" : "FeedbackinatorConfigurinator\r\tfrom: {GtOllamaChat. GtOpenAIChat}\r\tchose: 1\t\"counting starts at 1\"\r\tas: #chat_guru.\r\rFeedbackinatorConfigurinator\r\tfrom: { 'llama3.2' . 'phi3' } \r\tchose: 1 as: #chat_model. "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -354,14 +317,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-15T11:42:19.339897+02:00"
+						"dateAndTimeString" : "2024-10-15T12:46:10.671496+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "SYFMK+LgDQCG0uSIDMWfSA=="
 				},
-				"code" : "chat := GtOllamaChat new model: 'llama3.2'."
+				"code" : "chat := Feedback using model: (FeedbackinatorConfigurinator chatModel)."
 			}
 		]
 	},
