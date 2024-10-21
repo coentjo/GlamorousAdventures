@@ -43,3 +43,88 @@ AbstractFileReference >> gtFeedbackFor: aView [
 			width: 150;
 		actionUpdateButton
 ]
+
+{ #category : #'*Feedbackinator' }
+AbstractFileReference >> gtSummaryFor: aView [
+	<gtView>
+	| eventLoop |
+	self isFile ifFalse: [ ^ aView empty ].
+	[ self readStreamDo: [ :s | s next: 1000 ] ]
+		on: ZnInvalidUTF8
+		do: [ ^ aView empty ].
+
+	eventLoop := self watcher startLoop.
+
+	^ aView explicit
+		title: 'Summary' translated;
+		priority: 55;
+		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
+		stencil: [ self gtTextView: self ]
+]
+
+{ #category : #'*Feedbackinator' }
+AbstractFileReference >> gtTextView: aText [
+	| pane editor editorPane changeBlock originalText toolbar saveBlock |
+	originalText := BlRunRopedText file: aText.
+	pane := BrVerticalPane new matchParent.
+	editorPane := BrHorizontalPane new matchParent.
+	editorPane padding: (BlInsets all: 5).
+	editor := BrEditor new matchParent.
+	changeBlock := [ editorPane
+			childNamed: #modificationBar
+			ifFound: [ :elmt | 
+				elmt
+					inUIProcessDo: [ elmt
+							background: ((editor editor text equalsIgnoringAttributes: originalText)
+									ifTrue: [ Color transparent ]
+									ifFalse: [ elmt theme status changesBackgroundColor ]) ] ] ].
+	saveBlock := [ aText gtSaveContents: editor text asString.
+		originalText := BlRunRopedText file: aText.
+		changeBlock value ].
+	editor editor
+		when: BrTextEditorInsertedEvent do: changeBlock;
+		when: BrTextEditorDeletedEvent do: changeBlock;
+		when: BlInfiniteDataSourceChanged do: changeBlock.
+	editor
+		addShortcut: (BlShortcutWithAction new
+				combination: BlKeyCombination primaryS;
+				action: saveBlock).
+	editor editor text: (BlRunRopedText file: aText) glamorousRegularFont.
+	editorPane
+		addChild: (BlElement new
+					width: 5;
+					constraintsDo: [ :c | c vertical matchParent ];
+					yourself)
+			as: #modificationBar;
+		addChild: editor as: #editor.
+	toolbar := BrToolbar new
+			aptitude: (BrGlamorousToolbarAptitude new spacing: 5);
+			fitContent;
+			margin: (BlInsets bottom: 5).
+	toolbar
+		addChild: (BrButton new
+				aptitude: BrGlamorousButtonWithIconAptitude;
+				beSmallSize;
+				icon: BrGlamorousVectorIcons accept;
+				label: 'Save';
+				action: saveBlock)
+		as: #saveButton.
+	toolbar
+		addChild: (BrButton new
+				aptitude: BrGlamorousButtonWithIconAptitude;
+				beSmallSize;
+				icon: BrGlamorousVectorIcons cancel;
+				label: 'Cancel';
+				action: [ editor editor text: (BlRunRopedText file: aText) glamorousRegularFont.
+					changeBlock value ])
+		as: #cancelButton.
+	pane addChild: editorPane.
+	pane addChild: toolbar as: #toolbar.
+	pane addAptitude: (BrGlamorousWithVerticalScrollbarAptitude new scrollableName: #editor).
+	^ pane
+]
+
+{ #category : #'*Feedbackinator' }
+AbstractFileReference >> summarized [
+	^ 37
+]

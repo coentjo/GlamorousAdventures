@@ -142,14 +142,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-15T14:47:22.742674+02:00"
+									"dateAndTimeString" : "2024-10-17T15:48:03.959023+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "eOTuJ+LgDQCF+ek8DMWfSA=="
 							},
-							"code" : "FileLocator home / 'tmpTestData' gtItems"
+							"code" : "FileLocator home / 'tmpTestData' / 'someplan.md'"
 						},
 						{
 							"__type" : "textSnippet",
@@ -325,6 +325,74 @@
 					"uidString" : "SYFMK+LgDQCG0uSIDMWfSA=="
 				},
 				"code" : "chat := Feedbackinator letsChat"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-17T15:31:21.720868+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-17T15:34:16.33859+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "T7ls8A3hDQC+7iOxC3XCmw=="
+				},
+				"code" : "#gtView senders"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-17T15:32:37.189022+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-17T15:32:37.189022+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7Ebs9A3hDQC/G+zrC3XCmw=="
+				},
+				"code" : ""
 			}
 		]
 	},
