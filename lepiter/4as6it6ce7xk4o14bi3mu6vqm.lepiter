@@ -131,6 +131,40 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-21T13:40:41.244243+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-21T13:48:02.053055+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "oI7821zhDQCsx76/BJQKCg=="
+							},
+							"code" : "FileLocator home / 'tmpTestData' "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-10-15T11:17:14.438475+02:00"
 								}
 							},
@@ -142,14 +176,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-18T16:46:04.153902+02:00"
+									"dateAndTimeString" : "2024-10-21T12:53:52.637905+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "eOTuJ+LgDQCF+ek8DMWfSA=="
 							},
-							"code" : "FileLocator home / 'tmpTestData' / 'someplan.md'1"
+							"code" : "FileLocator home / 'tmpTestData' / 'someplan.md'"
 						},
 						{
 							"__type" : "textSnippet",
