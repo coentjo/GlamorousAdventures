@@ -105,7 +105,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-27T12:22:43.180359+01:00"
+									"dateAndTimeString" : "2024-10-27T16:31:35.455429+01:00"
 								}
 							},
 							"uid" : {
@@ -139,14 +139,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-27T11:58:29.015717+01:00"
+									"dateAndTimeString" : "2024-10-27T13:03:05.724906+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "onfbntPhDQCabPFDC81Fcg=="
 							},
-							"code" : "FileReferenceProxy on: portfolioDir"
+							"code" : "FileReferenceProxy on: portfolioDir "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-27T16:31:35.909442+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-27T16:32:46.648221+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "nkHWyNjhDQC12+cqAGb8Ew=="
+							},
+							"code" : "portfolioDir := FileLocator imageDirectory \r\t/ 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' \r\t/ 'portfolio.for.demo' / 'plan_v1.docx'.\rportfolioDir pathString"
 						}
 					]
 				},

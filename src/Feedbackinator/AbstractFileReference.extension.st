@@ -14,8 +14,8 @@ AbstractFileReference >> gtDiffFor: aView [
 	^ aView diff
 		title: 'diff' translated;
 		priority: 60;
-		from: [self contents];
-		to: [ (self parent / 'someplan.md' ) contents ]
+		from: [ (self parent / 'plan_v1.md' ) contents ];
+		to: [self contents]
 ]
 
 { #category : #'*Feedbackinator' }
@@ -93,7 +93,12 @@ AbstractFileReference >> gtSummaryFor: aView [
 
 	^ aView explicit
 		title: 'Summary' translated;
-		priority: 55;
+		priority: 53;
+		actionButtonIcon: BrGlamorousIcons bothsides
+			action: [ :aButton | 
+				| md |
+				md := self createSummaryForMySelf.
+				aButton phlow spawnObject: md ];
 		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
 		stencil: [ self gtTextView: self ]
 ]

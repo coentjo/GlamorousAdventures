@@ -326,44 +326,38 @@ FileReferenceProxy >> isDirectory [
 
 { #category : #'as yet unclassified' }
 FileReferenceProxy >> paintPortfolioWith: view [
-	"view nodes
-		shape: [ :x | BlTextElement new text: x asString asRopedText ];
-		with: (1 to: 25)."
-
 	view nodes
 		shape: [ :x | 
 			BlTextElement new
 				text: x basename asString asRopedText;
 				border: (BlBorder paint: 
 					(x isDirectory ifTrue: [Color red] ifFalse: [Color blue]) )];
-		with: self component children , {self component}.
+		with: {self component} , self component children .
 	view edges
-		connectFrom: [ :x | 
-			x parent	"b := x asString size < self asString size.
+		connectTo: [ :x | 
+			x predecessor	"b := x asString size < self asString size.
 			b"	"x asString beginsWith: self asString " ].
 	view edges
-		shape: [ :x | BlLineElement new border: (BlBorder paint: (Color gray lighter) width: 1) ];
+		shape: [ :x | BlBezierElement new border: (BlBorder paint: (Color gray lighter) width: 1) ];
 		passive;
-		connect: 			(self component children collect: [ :c | self component -> c]) "
-			{ self component -> (self component children at: 1) 
-			. self component -> (self component children at: 2) 
-			} "
+		connect: 			
+			(self component children collect: [ :c | c -> self component predecessor]) 
 			from: #key
 			to: #value.
-	view layout tree.
-	^ view	"	mondrian nodes 
+	view layout circle  "tree" "horizontalTree".
+"	^ view	 nodes 
 		stencil: [ :c | 
 			BlElement new 
 				zIndex: 10;
 				border: (BlBorder paint: (Color black alpha: 0.5) width: 2);
-				width: (c numberOfAttributes max: 5);
-				height: (c numberOfMethods max: 5)];
-		with: self.
-	mondrian edges 
+				width: 15;
+				height: 15];
+		with: {self component} , self component children ."
+	"view edges 
 		fromCenterBottom;
 		toCenterTop;
-		connectFrom: #superclass.
-	mondrian layout custom: (GtGraphTreeLayout new)."
+		connectFrom: #parent."
+"	view layout custom: (GtGraphTreeLayout new)."
 ]
 
 { #category : #accessing }
