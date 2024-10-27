@@ -37,6 +37,24 @@ AbstractFileReference >> createSummaryForMySelf [
 ]
 
 { #category : #'*Portflowionator' }
+AbstractFileReference >> gtDiffFor: aView [
+	<gtView>
+	| eventLoop |
+	self isFile ifFalse: [ ^ aView empty ].
+	[ self readStreamDo: [ :s | s next: 1000 ] ]
+		on: ZnInvalidUTF8
+		do: [ ^ aView empty ].
+
+	eventLoop := self watcher startLoop.
+
+	^ aView diff
+		title: 'diff' translated;
+		priority: 60;
+		from: [ (self parent / 'plan_v1.md' ) contents ];
+		to: [self contents]
+]
+
+{ #category : #'*Portflowionator' }
 AbstractFileReference >> gtPandoc [
 	| details |
 	details := {
@@ -80,4 +98,27 @@ AbstractFileReference >> gtPandocFor: aView [
 		column: 'key' text: #first;
 		column: 'value' text: #second weight: 3;
 		send: #last
+]
+
+{ #category : #'*Portflowionator' }
+AbstractFileReference >> gtSummaryFor: aView [
+	<gtView>
+	| eventLoop |
+	self isFile ifFalse: [ ^ aView empty ].
+	[ self readStreamDo: [ :s | s next: 1000 ] ]
+		on: ZnInvalidUTF8
+		do: [ ^ aView empty ].
+
+	eventLoop := self watcher startLoop.
+
+	^ aView explicit
+		title: 'Summary' translated;
+		priority: 53;
+		actionButtonIcon: BrGlamorousIcons bothsides
+			action: [ :aButton | 
+				| md |
+				md := self createSummaryForMySelf.
+				aButton phlow spawnObject: md ];
+		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
+		stencil: [ self gtTextView: self ]
 ]

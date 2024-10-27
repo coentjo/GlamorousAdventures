@@ -1,24 +1,6 @@
 Extension { #name : #AbstractFileReference }
 
 { #category : #'*Feedbackinator' }
-AbstractFileReference >> gtDiffFor: aView [
-	<gtView>
-	| eventLoop |
-	self isFile ifFalse: [ ^ aView empty ].
-	[ self readStreamDo: [ :s | s next: 1000 ] ]
-		on: ZnInvalidUTF8
-		do: [ ^ aView empty ].
-
-	eventLoop := self watcher startLoop.
-
-	^ aView diff
-		title: 'diff' translated;
-		priority: 60;
-		from: [ (self parent / 'plan_v1.md' ) contents ];
-		to: [self contents]
-]
-
-{ #category : #'*Feedbackinator' }
 AbstractFileReference >> gtFeedbackFor: aView [
 	<gtView>
 	| eventLoop |
@@ -76,29 +58,6 @@ AbstractFileReference >> gtPythonFor: aView [
 	^ aView explicit
 		title: 'Python' translated;
 		priority: 60;
-		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
-		stencil: [ self gtTextView: self ]
-]
-
-{ #category : #'*Feedbackinator' }
-AbstractFileReference >> gtSummaryFor: aView [
-	<gtView>
-	| eventLoop |
-	self isFile ifFalse: [ ^ aView empty ].
-	[ self readStreamDo: [ :s | s next: 1000 ] ]
-		on: ZnInvalidUTF8
-		do: [ ^ aView empty ].
-
-	eventLoop := self watcher startLoop.
-
-	^ aView explicit
-		title: 'Summary' translated;
-		priority: 53;
-		actionButtonIcon: BrGlamorousIcons bothsides
-			action: [ :aButton | 
-				| md |
-				md := self createSummaryForMySelf.
-				aButton phlow spawnObject: md ];
 		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
 		stencil: [ self gtTextView: self ]
 ]
