@@ -51,7 +51,7 @@ AbstractFileReference >> gtDiffFor: aView [
 	^ aView diff
 		title: 'diff' translated;
 		priority: 60;
-		from: [ (self parent / 'plan_v1.md' ) contents ];
+		from: [ (self parent / 'plan_v1.docx.md' ) contents ];
 		to: [self contents]
 ]
 
