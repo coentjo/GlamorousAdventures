@@ -8,7 +8,45 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:43:38.123506+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:45:13.913335+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qJ2erMXhDQCLqxhCDMDJ7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "- [[bootstrapping the environment]]"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -18,7 +56,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:43:38.123506+02:00"
+						"dateAndTimeString" : "2024-10-27T11:34:54.530504+01:00"
 					}
 				},
 				"editEmail" : {
@@ -29,23 +67,98 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:45:13.913335+02:00"
+						"dateAndTimeString" : "2024-10-27T11:34:58.768155+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "qJ2erMXhDQCLqxhCDMDJ7A=="
+					"uidString" : "+cLKo9ThDQCupoWwC81Fcg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "- [[bootstrapping the environment]]"
+				"string" : "# Prepare"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:38:40.172812+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:45:11.694628+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "gmyGmcXhDQCJIjTHDMDJ7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "- [[Feedbackinator]]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:38:43.240442+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:45:15.73901+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "jxELm8XhDQCJTvZODMDJ7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "- [[experiment Portflowionator]]"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -55,7 +168,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:38:40.172812+02:00"
+						"dateAndTimeString" : "2024-10-27T11:35:02.221694+01:00"
 					}
 				},
 				"editEmail" : {
@@ -66,54 +179,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:45:11.694628+02:00"
+						"dateAndTimeString" : "2024-10-27T11:35:20.425185+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "gmyGmcXhDQCJIjTHDMDJ7A=="
+					"uidString" : "rx5ApNThDQCu2tl7C81Fcg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "- [[Feedbackinator]]"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:38:43.240442+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:45:15.73901+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "jxELm8XhDQCJTvZODMDJ7A=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "- [[experiment Portflowionator]]"
+				"string" : "# Using Portflowionator"
 			}
 		]
 	},

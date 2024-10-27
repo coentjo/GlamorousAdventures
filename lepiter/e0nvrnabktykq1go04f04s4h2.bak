@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-26T18:46:07.931785+02:00"
+									"dateAndTimeString" : "2024-10-26T18:46:16.249117+02:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,44 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "- download [Glamorous Toolkit](https://gtoolkit.com/)"
+							"string" : "- download en open [Glamorous Toolkit](https://gtoolkit.com/)"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:46:26.687226+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-26T18:46:34.559581+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "QgovtsXhDQCOSJ5fDMDJ7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "- for local use you need Ollama "
 						}
 					]
 				},
