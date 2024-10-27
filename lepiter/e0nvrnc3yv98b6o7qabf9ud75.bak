@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:43:43.580407+02:00"
+						"dateAndTimeString" : "2024-10-26T18:43:57.658958+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[bootstrappin"
+				"string" : "[[bootstrapping the environment]]"
 			},
 			{
 				"__type" : "textSnippet",
@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-26T18:38:40.179018+02:00"
+						"dateAndTimeString" : "2024-10-26T18:45:11.694628+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[Feedbackinator]]"
+				"string" : "- [[Feedbackinator]]"
 			},
 			{
 				"__type" : "textSnippet",

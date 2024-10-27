@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-26T19:03:37.335038+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-26T19:03:41.957013+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MykZ9MXhDQCScTjvDMDJ7A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Centrum Jeugd en gezin\nProjectplan\nKolbeek, Marlies     \nDerey, Walid\nOfferman, Iris\nAshram, Saleh\nSchakel, Janis\nAtai, Kheibar\n\fInhoudsopgave\n1. Projectopdracht\t2\n1.3 Probleemanalyse\t2\n1.4 Probleemstelling\t2\n2. Hoofd en deelvragen\t3\n2.1 Inleiding\t3\n2.2 Dashbord\t3\nHoofdvraag\t3\nDeelvragen\t3\n2.3 ML model\t4\nHoofdvraag\t4\nDeelvragen\t4\n2.4 No show voorspeller\t5\nHoofdvraag\t5\nDeelvragen\t5\n2.5 Project scope\t6\n2.6 Randvoorwaarde\t6\n3. eindproduct\t8\n2. Projectorganisatie\t9\n2.1 Teamleden\t9\n2.2 Communicatie\t9\n2.3 Tijdsplanning\t9\nSprint 1 05/03 – 26/03\t9\nSprint 2 26/03 – 23/04\t9\nSprint 3 23/04 – 28/05\t9\nSprint 4 28/05 – 23/06\t10\n2.3 Projectmanagement\t10\n2.4 Op te leveren producten\t10\n2.5 Architectuurlaag\t10\n2.6 Risico’s\t10\nVerwijzingen\t11\n\f1. Projectopdracht\n1.3 Probleemanalyse\nIn het Nederlandse jeugdzorgsysteem worden we geconfronteerd met meerdere, complexe problemen die effectieve en tijdige hulp aan jongeren belemmeren. Het hart van de uitdaging ligt bij een aanzienlijk toegenomen vraag naar zorg. Deze groeiende behoefte aan ondersteuning overschrijdt de huidige capaciteiten en middelen van het systeem, wat resulteert in lange wachtlijsten en oplopende kosten. Het directe gevolg hiervan is dat jongeren niet altijd de noodzakelijke hulp ontvangen wanneer ze deze het meest nodig hebben, wat hun situatie verder kan verergeren. \nEen van de kernproblemen binnen het systeem is de versnippering van de zorg. Verschillende organisaties en instanties bieden hulp aan, maar een gebrek aan coördinatie en samenwerking tussen deze partijen maakt het moeilijk om een samenhangend en effectief zorgaanbod te realiseren. Deze versnippering leidt tot onduidelijkheden in wie welke zorg nodig heeft en zorgt ervoor dat het aanbieden van gepaste ondersteuning aan jongeren een complexe puzzel wordt. \nEen ander significant struikelblok is de identificatie van jongeren die intensievere zorgbehoeften hebben. Het herkennen van deze behoeften is niet altijd eenvoudig, omdat de indicatoren vaak subtiel en complex zijn. Zonder een geïntegreerde aanpak en effectieve communicatie tussen zorgverleners, kunnen signalen gemist worden, waardoor jongeren niet de hulp krijgen die ze nodig hebben voordat hun problemen escaleren. \nBovendien wordt de overvloed aan beschikbare data binnen de jeugdzorg niet altijd effectief ingezet voor het voorspellen van zorgbehoeften of het ondersteunen van besluitvormingsprocessen. De potentie van data-analyse om patronen en risicofactoren te identificeren die menselijke beoordelaars kunnen missen, wordt niet volledig gerealiseerd. Dit beperkt de mogelijkheid om vroegtijdige en gerichte interventies in te zetten die kunnen bijdragen aan betere zorguitkomsten en een efficiëntere inzet van middelen. \nHet vinden van de juiste hulp op het juiste moment voor jongeren is een uitdaging, deels omdat het systeem moeite heeft om nauwkeurig te bepalen welke vorm van hulp het best past bij hun specifieke situatie. Deze vertraging of mismatch in hulpverlening kan ertoe leiden dat jongeren niet de optimale ondersteuning ontvangen die nodig is voor hun groei en welzijn. Dit probleem benadrukt de noodzaak binnen het jeugdzorgsysteem om effectievere methoden te ontwikkelen voor het snel identificeren en ondersteunen van jongeren die meer intensieve zorg nodig hebben. \nBron: De stand van de jeugdzorg, rijksoverheid 2023\n1.4 Probleemstelling\nDit onderzoek richt zich op de ontwikkeling van een voorspellend model en dashboard ter ondersteuning van het Centrum voor Jeugd en Gezin (CJG) bij het identificeren van jongeren die potentieel intensievere zorgbehoeften hebben, met als doel het verminderen van de kosten en het verbeteren van de kwaliteit van jeugdhulp. Het model en dashboard beoogt vroegtijdige interventies mogelijk te maken door de analyse van bestaande data en het identificeren van indicatoren voor risicojongeren. De ambitie is om een instrument te creëren dat niet alleen voorspellingen doet over zorgbehoeften, maar ook praktische richtlijnen biedt voor tijdige en doelgerichte acties. \nHierbij zal de centrale vraag zijn: \"Hoe kan een geïntegreerd dashboard en voorspellend model het CJG in Capelle aan den IJssel helpen om de jeugdzorg te verbeteren door een efficiëntere identificatie van jongeren met intensievere zorgbehoeften, het effectiever beheren van de gevolgen van afspraak no-shows, en het ondersteunen van beleidsvorming en voorlichting met behulp van actuele gezondheidsinformatie?\"\n\n2. Hoofd en deelvragen\n2.1 Inleiding\nOm de complexiteit van het onderzoek te managen en een goede analyse te waarborgen, is besloten de probleemstelling op te splitsen in specifieke hoofd- en deelvragen voor elk onderdeel van het project. Door dit te doen, kunnen we de onderzoeksvragen nauwkeuriger afstemmen op de specifieke uitdagingen en behoeften die tijdens de probleemanalyse zijn geïdentificeerd.\n2.2 Dashbord\nHoofdvraag\nHoe kan een dashboard het CJG helpen beter beleid te maken en voorlichting te verbeteren door up-to-date informatie te geven over de gezondheid en het welzijn van kinderen in Capelle aan den IJssel?\nDeelvragen\nWaarom is het ontwikkelen van een dashboard relevant voor het verbeteren van de voorlichtingsinitiatieven binnen het CJG in Capelle aan den IJssel?\nWelke specifieke gezondheids- en welzijnsindicatoren zijn het meest relevant voor het beoordelen van de kind gezondheid in Capelle aan den IJssel?\nWat zijn de technische vereisten en uitdagingen bij het bouwen en implementeren van het dashboard voor het Centrum Jeugd en Gezin?\nWelke methoden en benaderingen kunnen worden toegepast om de nauwkeurigheid en betrouwbaarheid van de in het dashboard gepresenteerde data te waarborgen? (Triangulatie)\nHoe kan het dashboard zo worden ontworpen en geïmplementeerd dat het aansluit bij de behoeften en gebruikerservaringen van werknemers binnen het CJG?\nOnderzoeksmethoden\n\n2.3 ML model\nHoofdvraag\nHoe kan een voorspellend algoritme bijdragen aan het verminderen van de werkdruk en de wachtlijsten terugdringen door efficiëntere identificatie van zorgbehoevende jongeren?\nDeelvragen\nIs het classificeren van zorg intensieve kinderen de beste strategie om de werkdruk te verlichten en zijn er alternatieve methoden?\nWelke variabelen zijn indicatief voor het classificeren van een kind als zorgintensief, en hoe zijn deze variabelen wetenschappelijk of empirisch onderbouwd?\nWat zijn de ethische aspecten van het gebruik van medische gegevens van kinderen voor classificatie?\nWelke technische stappen zijn nodig om het model te integreren in de bestaande systemen van het CJG\nIn hoeverre kan het model betrouwbare voorspellingen doen over veranderingen in de werkdruk en het reduceren van de wachtlijsten gebaseerd op de classificatie van zorg intensieve jongeren?\nOnderzoeksmethoden\n\n\n2.4 No show voorspeller\nHoofdvraag\nHoe kan het Centrum voor Jeugd en Gezin (CJG) Capelle efficiënter en effectiever omgaan met No-shows.\nDeelvragen\nWaarom is het belangrijk voor het CJG Capelle om no-shows te verminderen?\nHoe ziet het huidige systeem voor afspraakplanning en -management eruit, en welke data worden er vastgelegd?\nWelke strategieën worden momenteel gebruikt door het CJG om no-show te verminderen en hoe effectief zijn ze?\nOp basis van welke historische gegevens kan het meest effectief voorspeld worden welke afspraken waarschijnlijk niet nagekomen zullen worden?\nHoe kan een voorspellend model ontwikkeld worden dat betrouwbaar no-shows voor toekomstige afspraken identificeert, en welke technologische en analytische methoden zijn hiervoor het meest geschikt?\nOnderzoeksmethoden\n\n2.5 Project scope\t\n\n2.6 Randvoorwaarde\nVoor dit project is het essentieel dat we werken met data die de privacy van kinderen respecteert. Dit betekent dat alle persoonsgegevens die we van het CJG krijgen, geanonimiseerd moeten zijn. Het is belangrijk dat uit deze data niet te herleiden is om welke kinderen het gaat, zodat hun privacy volledig beschermd blijft. Dit is niet alleen een wettelijke eis, maar ook een fundamentele ethische norm voor ons onderzoek. Het zorgt ervoor dat we het model en dashboard veilig kunnen ontwikkelen en testen, zonder risico's voor de privacy van de betrokkenen.\n\f3. eindproduct\n\n\n\f2. Projectorganisatie\n2.1 Teamleden\n\n2.2 Communicatie\nEr wordt wekelijks overleg gevoerd met het team om de voortgang van het project te bespreken. Tijdens deze bijeenkomsten wordt de huidige stand van zaken doorgenomen en eventuele knelpunten geïdentificeerd en besproken. Daarnaast vindt er elke sprint een afstemming plaats met de stakeholder om de voortgang van het project te evalueren en verdere actiepunten te definiëren\n2.3 Tijdsplanning\nBinnen dit project wordt de Scrum methodiek gehanteerd om de werkzaamheden gestructureerd en efficiënt aan te pakken. Deze aanpak stelt ons in staat om in korte, overzichtelijke periodes (sprints) specifieke doelen te bereiken en flexibel in te spelen op veranderingen of nieuwe inzichten. Hieronder volgt een overzicht van de geplande sprints en de bijbehorende doelstellingen:\nSprint 1 05/03 – 26/03\nHoofdvragen en deelvragen opstellen\nScope bepalen\nInterview stakeholder\nSprint 2 26/03 – 23/04\nDashboard: Onderzoek \nML model: Onderzoek\nNO show voorspeller: Onderzoek\nSprint 3 23/04 – 28/05\nDashboard: inrichten van dashboard\nML model: database gereed en ingericht\nML model: Algoritme wat gebruikt gaat worden is bekend\nNO show voorspeller: Database gereed en ingericht\nNO show voorspeller: Schets van hoe het programma eruit gaat zien\nSprint 4 28/05 – 23/06\nDashboard: onderhouden en actualiseren dashboard\nNo show voorspeller klaar\nMachine learning model prototype\nOnderzoeksdocumenten afgerond\n2.3 Projectmanagement\nDe voortgang van het project zal worden bijgehouden door middel van JIRA, het project werkt via de scrum methodiek.\n2.4 Op te leveren producten\nOnderzoeksrapport \nTechnisch rapport\nDashboard in Power BI\nPrototype machine learning model\nOplossing voor no show\n2.5 Architectuurlaag\nIn dit project zullen voornamelijk drie architectuurlagen aan bod komen:\nSoftware, niveau 2\nUser interaction niveau 2\nOrganisatieprocessen niveau 2 en 3\nInfrastructuur niveau 2\n2.6 Risico’s\nIn elk project is het van cruciaal belang om potentiële risico's te identificeren, te evalueren en te managen. Deze risicobeoordeling draagt bij aan het proactief adresseren van problemen die de voortgang van het project kunnen beïnvloeden. Hieronder wordt een overzicht gegeven van de belangrijkste geïdentificeerde risico's voor dit project, inclusief de waarschijnlijkheid van hun voorkomen, de ernst van de impact, de gevolgen, en de voorgestelde acties en verantwoordelijkheden om deze risico's te beheersen.\n\n\n \nVerwijzingen\nRijksoverheid. (2023). De stand van de jeugdzorg. "
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-10-26T19:03:37.281687+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-10-26T19:03:37.281687+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "gen. Plan"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "965718f4-c5e1-0d00-9270-e9180cc0c9ec"
+	}
+}
