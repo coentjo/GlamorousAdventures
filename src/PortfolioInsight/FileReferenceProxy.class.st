@@ -262,6 +262,17 @@ FileReferenceProxy >> gtStyledCodeFor: aView [
 			component contents asRopedText ]
 ]
 
+{ #category : #'as yet unclassified' }
+FileReferenceProxy >> gtVisualFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Portfolio';
+		priority: 12;
+		painting: [ :aMondrian |
+			self paintPortfolioWith: aMondrian  ];
+	actionUpdateButton
+]
+
 { #category : #accessing }
 FileReferenceProxy >> insightColor [
 	| extensionColors |
@@ -311,6 +322,48 @@ FileReferenceProxy >> interestingChildren [
 { #category : #accessing }
 FileReferenceProxy >> isDirectory [
 	^ self component isDirectory
+]
+
+{ #category : #'as yet unclassified' }
+FileReferenceProxy >> paintPortfolioWith: view [
+	"view nodes
+		shape: [ :x | BlTextElement new text: x asString asRopedText ];
+		with: (1 to: 25)."
+
+	view nodes
+		shape: [ :x | 
+			BlTextElement new
+				text: x basename asString asRopedText;
+				border: (BlBorder paint: 
+					(x isDirectory ifTrue: [Color red] ifFalse: [Color blue]) )];
+		with: self component children , {self component}.
+	view edges
+		connectFrom: [ :x | 
+			x parent	"b := x asString size < self asString size.
+			b"	"x asString beginsWith: self asString " ].
+	view edges
+		shape: [ :x | BlLineElement new border: (BlBorder paint: (Color gray lighter) width: 1) ];
+		passive;
+		connect: 			(self component children collect: [ :c | self component -> c]) "
+			{ self component -> (self component children at: 1) 
+			. self component -> (self component children at: 2) 
+			} "
+			from: #key
+			to: #value.
+	view layout tree.
+	^ view	"	mondrian nodes 
+		stencil: [ :c | 
+			BlElement new 
+				zIndex: 10;
+				border: (BlBorder paint: (Color black alpha: 0.5) width: 2);
+				width: (c numberOfAttributes max: 5);
+				height: (c numberOfMethods max: 5)];
+		with: self.
+	mondrian edges 
+		fromCenterBottom;
+		toCenterTop;
+		connectFrom: #superclass.
+	mondrian layout custom: (GtGraphTreeLayout new)."
 ]
 
 { #category : #accessing }

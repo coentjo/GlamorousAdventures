@@ -60,6 +60,40 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-27T12:22:43.697328+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-27T12:22:58.907396+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "A8jOTtXhDQCDF6qtBFUZvQ=="
+							},
+							"code" : "portfolioDir := FileLocator imageDirectory \r\t/ 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' \r\t/ 'portfolio.test.student' "
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2024-10-26T18:39:49.030493+02:00"
 								}
 							},
@@ -71,14 +105,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-26T19:13:02.554581+02:00"
+									"dateAndTimeString" : "2024-10-27T12:22:43.180359+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "n/L2nsXhDQCK8B4JDMDJ7A=="
 							},
-							"code" : "FileLocator imageDirectory / 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' \r\t/ 'portfolio.test.student' "
+							"code" : "portfolioDir := FileLocator imageDirectory \r\t/ 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' \r\t/ 'portfolio.for.demo' "
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -105,14 +139,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-27T10:21:56.771265+01:00"
+									"dateAndTimeString" : "2024-10-27T11:58:29.015717+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "onfbntPhDQCabPFDC81Fcg=="
 							},
-							"code" : ""
+							"code" : "FileReferenceProxy on: portfolioDir"
 						}
 					]
 				},
