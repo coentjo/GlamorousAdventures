@@ -25,10 +25,11 @@ AbstractFileReference >> createSummaryForMySelf [
 	"Copied from the Class Comment from the used class"
 
 	| proc |
+	"cat ~/git/tools/fabric/system.md | fabric --pattern summarize > "
 	"pandoc -s plan_v1.docx -t md -o plan_v1.docx.md"
 	proc := GtSubprocessWithInMemoryOutput
 			command: 'pandoc'
-			arguments: { '-s' . self pathString . '-t' . 'markdown' . '-o' . self pathString, '.md' }.
+			arguments: { '-s' . self pathString . '-t' . 'markdown' . '-o' . self pathString, '.summary.md' }.
 	proc errorBlock: [ :prc | self halt; error: 'External process failed, see proc' ].
 	proc runAndWait.
 	proc stdout.
