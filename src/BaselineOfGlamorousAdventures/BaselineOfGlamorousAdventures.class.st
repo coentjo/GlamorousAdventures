@@ -27,5 +27,6 @@ BaselineOfGlamorousAdventures >> baseline: spec [
 		for: #common
 		do: [ spec
 				package: #PortfolioInsight;
-				package: #Feedbackinator ]
+				package: #Feedbackinator ;
+				package: #Portflowionator]
 ]
