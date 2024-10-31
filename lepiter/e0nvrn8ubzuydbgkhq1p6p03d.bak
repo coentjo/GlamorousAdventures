@@ -71,14 +71,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-27T19:46:27.714795+01:00"
+									"dateAndTimeString" : "2024-10-27T20:33:10.758183+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "n/L2nsXhDQCK8B4JDMDJ7A=="
 							},
-							"code" : "portfoliosDir := FileLocator imageDirectory \r\t/ 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' .\rFileReferenceProxy on: portfoliosDir /'portfolio.for.demo'  "
+							"code" : "portfoliosDir := FileLocator imageDirectory \r\t/ 'pharo-local/iceberg/coentjo/GlamorousAdventures'\r\t/ 'portfolios' .\rportfoliosDir /'portfolio.for.demo' "
 						}
 					]
 				},
@@ -143,14 +143,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-27T19:48:37.475363+01:00"
+									"dateAndTimeString" : "2024-10-27T20:33:34.815688+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "Tu0od9vhDQCstsC1BRGNEA=="
 							},
-							"code" : "portfoliosDir /'portfolio.test.student/plan_v2.docx'  \rcopyTo: \rportfoliosDir /'portfolio.for.demo/plan_v2.docx'  \r"
+							"code" : "portfoliosDir /'portfolio.test.student/plan_v2.docx'  \rcopyTo: \rportfoliosDir /'portfolio.for.demo/plan_v2.docx'  "
 						},
 						{
 							"__type" : "textSnippet",
