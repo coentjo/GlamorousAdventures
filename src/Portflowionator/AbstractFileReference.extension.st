@@ -89,7 +89,7 @@ AbstractFileReference >> gtPandocFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Pandoc';
-		priority: 52;
+		priority: 72;
 		actionButtonIcon: BrGlamorousIcons bothsides 
 			action: [ :aButton |  | md |
 				md :=  self createMarkdownForMyself.
