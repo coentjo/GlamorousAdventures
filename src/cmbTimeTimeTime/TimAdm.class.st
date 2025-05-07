@@ -1,3 +1,8 @@
+"
+Class: TimAdm
+
+Responsibility: Help me administer my time spendings.
+"
 Class {
 	#name : #TimAdm,
 	#superclass : #Object,
