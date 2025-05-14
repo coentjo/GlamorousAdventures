@@ -34,3 +34,8 @@ TADay >> durations [
 TADay >> isDayWithId: aDayInteger [
 	^ dayId = aDayInteger
 ]
+
+{ #category : #'as yet unclassified' }
+TADay >> totalHours [
+	^ self durations collect: [ :each | 1 ]
+]
