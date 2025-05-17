@@ -34,3 +34,24 @@ TADay >> durations [
 TADay >> isDayWithId: aDayInteger [
 	^ dayId = aDayInteger
 ]
+
+{ #category : #'as yet unclassified' }
+TADay >> printOn: aStream [
+	aStream
+		nextPutAll: dayId asString;
+		nextPutAll: ': '.
+	self durations
+		do: [ :dur | 
+			aStream
+				nextPutAll: dur totalHours asString;
+				nextPutAll: '>' ].
+	aStream
+		nextPutAll: '> ';
+		nextPutAll: self totalHours asString
+]
+
+{ #category : #'as yet unclassified' }
+TADay >> totalHours [
+	^ (self durations collect: [ :each | each totalHours ]) 
+		sum
+]

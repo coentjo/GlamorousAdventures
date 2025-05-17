@@ -37,3 +37,21 @@ TimAdm >> from: anObject to: anObject1 name: aString [
 TimAdm >> from: anObject to: anObject1 name: aString description: aString1 [ 
 	self from: anObject to: anObject1 name: aString1
 ]
+
+{ #category : #'as yet unclassified' }
+TimAdm >> gtStatsFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Stats';
+		priority: 120;
+		aptitude: BrGlamorousCodeEditorAptitude;
+		text: [ self printStats asRopedText ];
+		actionUpdateButton
+]
+
+{ #category : #'as yet unclassified' }
+TimAdm >> printStats [
+	| totals |
+	totals := self days collect: [ :each | each totalHours ].
+	^ totals printString , ' --> ', totals sum printString
+]
