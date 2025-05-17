@@ -45,10 +45,13 @@ TimAdm >> gtStatsFor: aView [
 		title: 'Stats';
 		priority: 120;
 		aptitude: BrGlamorousCodeEditorAptitude;
-		text: [ self printString asRopedText ];
+		text: [ self printStats asRopedText ];
 		actionUpdateButton
 ]
 
 { #category : #'as yet unclassified' }
 TimAdm >> printStats [
+	| totals |
+	totals := self days collect: [ :each | each totalHours ].
+	^ totals printString , ' --> ', totals sum printString
 ]
