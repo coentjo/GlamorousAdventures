@@ -1,5 +1,5 @@
 Class {
-	#name : #ArchLayerSoftware,
+	#name : #ArchLayerOrganisationalProcesses,
 	#superclass : #HboiLayer,
 	#category : #hboiLearningOutcomes
 }

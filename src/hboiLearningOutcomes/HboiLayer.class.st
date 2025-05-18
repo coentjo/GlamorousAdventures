@@ -1,10 +1,10 @@
 Class {
-	#name : #ArchitectureLayer,
+	#name : #HboiLayer,
 	#superclass : #Object,
 	#category : #hboiLearningOutcomes
 }
 
 { #category : #accessing }
-ArchitectureLayer class >> software [
+HboiLayer class >> software [
 	^ ArchLayerSoftware
 ]

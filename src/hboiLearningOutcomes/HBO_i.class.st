@@ -36,5 +36,5 @@ HBO_i class >> architectureLayer: aSymbol [
 
 { #category : #accessing }
 HBO_i class >> software [
-	^ ArchitectureLayer software
+	^ HboiLayer software
 ]
