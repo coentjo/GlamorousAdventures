@@ -10,6 +10,11 @@ Class {
 	#category : #hboiLearningOutcomes
 }
 
+{ #category : #'as yet unclassified' }
+Competence >> activity [
+	^ activity
+]
+
 { #category : #accessing }
 Competence >> activity: aString [ 
 	activity := aString
@@ -36,7 +41,14 @@ Competence >> level: anInteger [
 	level := anInteger
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #printing }
 Competence >> printOn: aStream [
-	aStream nextPutAll: self description
+	aStream 
+		nextPutAll: layer asString;
+		nextPutAll: ', ';
+		nextPutAll: level asString;
+		nextPutAll: ', ';
+		nextPutAll: activity asString;
+		nextPutAll: ', ';
+		nextPutAll: self description
 ]

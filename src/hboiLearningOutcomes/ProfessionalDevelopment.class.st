@@ -1,5 +1,5 @@
 Class {
-	#name : #LayerProfessionalDevelopment,
+	#name : #ProfessionalDevelopment,
 	#superclass : #HboiLayer,
 	#category : #hboiLearningOutcomes
 }
