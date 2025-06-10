@@ -53,5 +53,5 @@ TimAdm >> gtStatsFor: aView [
 TimAdm >> printStats [
 	| totals |
 	totals := self days collect: [ :each | each totalHours ].
-	^ totals printString , ' --> ', totals sum printString
+	^ totals printString , ' --> ', totals sum truncated printString
 ]
