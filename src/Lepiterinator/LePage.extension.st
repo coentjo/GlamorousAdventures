@@ -32,11 +32,13 @@ LePage >> researchPagesMapFor: aMondrian from: aStartPage [
 		stencil: [ :each | 
 			| element color size scaledSize |
 			color := (allReachedPages includes: each)
-					ifTrue: [ Color green muchDarker ]
+					ifTrue: [ Color green darker ]
 					ifFalse: [ Color red  ].
 			scaledSize := ((maxSize - minSize) * each wordCount sqrt / maxWordVal)
 					truncated + minSize.
 			size := scaledSize @ scaledSize.
+			(each title matches: '*experiment*') ifTrue: [color := Color blue].
+			(each title matches: '*?*') ifTrue: [color := Color orange].
 			each = aStartPage
 				ifTrue: [ color := Color yellow.
 					size := 30 @ 30 ].
