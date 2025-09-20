@@ -56,8 +56,9 @@ LePage >> researchPagesMapFor: aMondrian from: aStartPage [
 				toHead: (BlArrowheadSimpleArrow new border: Color veryLightGray);
 				zIndex: -1 ];
 		connectToAll: [ :page | page allOutgoingTextualLinks collectAsSet: #target ].
-	aMondrian layout force
+"	aMondrian layout  force
 		nbIterations: 30;
-		charge: -50.
+		charge: -50."
+	aMondrian layout sugiyama.
 	^ aMondrian
 ]
