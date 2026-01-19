@@ -1,6 +1,6 @@
-Extension { #name : #LePage }
+Extension { #name : 'LePage' }
 
-{ #category : #'*Lepiterinator' }
+{ #category : '*Lepiterinator' }
 LePage >> gtResearchPagesMapFor: aView [
 	"Inspired by: LePage>>gtReachablePagesMapFor: "
 
@@ -10,7 +10,7 @@ LePage >> gtResearchPagesMapFor: aView [
 		painting: [ :m | self researchPagesMapFor: m from: self ]
 ]
 
-{ #category : #'*Lepiterinator' }
+{ #category : '*Lepiterinator' }
 LePage >> researchPagesMapFor: aMondrian from: aStartPage [
 "reachablePagesMapFor: aMondrian from: aStartPage"
 	"Inspired by: Optimizing the links in the book for first time readers
@@ -48,7 +48,7 @@ LePage >> researchPagesMapFor: aMondrian from: aStartPage [
 				geometry: BlCircleGeometry new;
 				when: BlClickEvent
 					do: [ :e | e currentTarget phlow spawnTool: each asPhlowTool ];
-				aptitude: (self hoverPage: each forNodeEement: element) ];
+				aptitude: (self hoverPage: each forNodeElement: element) ];
 		with: nonTocPages.
 	aMondrian edges
 		stencil: [ BlLineElement new
