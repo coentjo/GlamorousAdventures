@@ -30,5 +30,6 @@ BaselineOfGlamorousAdventures >> baseline: spec [
 				package: #Feedbackinator ;
 				package: #Lepiterinator ;
 				package: #Portflowionator; 
-				package: #PortfolioInsight]
+				package: #PortfolioInsight;
+				package: #SemesterCalendarOverview ]
 ]
