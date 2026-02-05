@@ -1,13 +1,13 @@
-Extension { #name : #FileLocator }
+Extension { #name : 'FileLocator' }
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 FileLocator >> predecessor [
 	"predecessor of plan_v1.docx.md should be plan_v1.docx"
 	"So predecessor of 'title'++'something' should be the longest one with 'title' "
 	
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 FileLocator >> predecessorFrom: aCollection [
 	"predecessor of plan_v1.docx.md should be plan_v1.docx"
 	"So predecessor of 'title'++'something' should be the longest one with 'title' "
