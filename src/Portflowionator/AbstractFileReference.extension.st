@@ -1,12 +1,13 @@
-Extension { #name : #AbstractFileReference }
+Extension { #name : 'AbstractFileReference' }
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> createMarkdownForMyself [
-	"call shell process (uses Pandoc!), I only tested in MacOS at this moment"
+	"call shell process that uses Pandoc!, I only tested in MacOS at this moment"
 
 	"Copied from the Class Comment from the used class"
 
 	| proc |
+	self extension = 'docx' ifFalse: [^self inform: 'only for .docx'].
 	"pandoc -s plan_v1.docx -t md -o plan_v1.docx.md"
 	proc := GtSubprocessWithInMemoryOutput
 			command: 'pandoc'
@@ -18,7 +19,7 @@ AbstractFileReference >> createMarkdownForMyself [
 	^ self
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> createSummaryForMySelf [
 	"call shell process (uses Pandoc!), I only tested in MacOS at this moment"
 
@@ -37,7 +38,7 @@ AbstractFileReference >> createSummaryForMySelf [
 	^ self
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> gtDiffFor: aView [
 	<gtView>
 	| eventLoop |
@@ -55,7 +56,7 @@ AbstractFileReference >> gtDiffFor: aView [
 		to: [self contents]
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> gtPandoc [
 	| details |
 	details := {
@@ -84,7 +85,7 @@ AbstractFileReference >> gtPandoc [
 	^ details
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> gtPandocFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -101,7 +102,7 @@ AbstractFileReference >> gtPandocFor: aView [
 		send: #last
 ]
 
-{ #category : #'*Portflowionator' }
+{ #category : '*Portflowionator' }
 AbstractFileReference >> gtSummaryFor: aView [
 	<gtView>
 	| eventLoop |
