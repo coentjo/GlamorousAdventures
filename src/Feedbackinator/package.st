@@ -1,1 +1,1 @@
-Package { #name : #Feedbackinator }
+Package { #name : 'Feedbackinator' }

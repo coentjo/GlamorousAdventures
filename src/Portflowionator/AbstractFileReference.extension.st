@@ -87,7 +87,7 @@ AbstractFileReference >> gtPandoc [
 
 { #category : '*Portflowionator' }
 AbstractFileReference >> gtPandocFor: aView [
-	<gtView>
+	"<gtView>"
 	^ aView columnedList
 		title: 'Pandoc';
 		priority: 72;
