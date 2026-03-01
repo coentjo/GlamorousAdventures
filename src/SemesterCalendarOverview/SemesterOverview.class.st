@@ -35,7 +35,8 @@ SemesterOverview class >> datums202602 [
 	. #wk18 -> (mondayWk01 addDays: 119)
 	. #wk19 -> (mondayWk01 addDays: 126)
 	. #wk20 -> (mondayWk01 addDays: 133)
-	}
+	}.
+	^ self new
 ]
 
 { #category : 'accessing' }
