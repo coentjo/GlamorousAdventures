@@ -1,8 +1,8 @@
-Extension { #name : #AbstractFileReference }
+Extension { #name : 'AbstractFileReference' }
 
-{ #category : #'*Feedbackinator' }
+{ #category : '*Feedbackinator' }
 AbstractFileReference >> gtFeedbackFor: aView [
-	<gtView>
+	"<gtView>"
 	| eventLoop |
 	self isDirectory
 		ifFalse: [ ^ aView empty ].
@@ -44,7 +44,7 @@ AbstractFileReference >> gtFeedbackFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'*Feedbackinator' }
+{ #category : '*Feedbackinator' }
 AbstractFileReference >> gtPythonFor: aView [
 	<gtView>
 	| eventLoop |
@@ -62,7 +62,7 @@ AbstractFileReference >> gtPythonFor: aView [
 		stencil: [ self gtTextView: self ]
 ]
 
-{ #category : #'*Feedbackinator' }
+{ #category : '*Feedbackinator' }
 AbstractFileReference >> gtTextView: aText [
 	| pane editor editorPane changeBlock originalText toolbar saveBlock pre |
 	pre := 'This is a summary'.
@@ -125,12 +125,12 @@ AbstractFileReference >> gtTextView: aText [
 	^ pane
 ]
 
-{ #category : #'*Feedbackinator' }
+{ #category : '*Feedbackinator' }
 AbstractFileReference >> summarized [
 	^ 37
 ]
 
-{ #category : #'*Feedbackinator' }
+{ #category : '*Feedbackinator' }
 AbstractFileReference >> summary [
 self halt.
 	^ 'this is only a summary...'
