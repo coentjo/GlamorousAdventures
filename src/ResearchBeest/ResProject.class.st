@@ -16,3 +16,8 @@ ResProject >> printOn: aStream [
 		nextPutAll: (title first isVowel ifTrue: ['an '] ifFalse: ['a ']);
 		nextPutAll: title
 ]
+
+{ #category : 'as yet unclassified' }
+ResProject >> resultBackgroundColor [
+	^ Color blue
+]

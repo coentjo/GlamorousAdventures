@@ -42,6 +42,11 @@ ResObject >> researchProperty [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> resultBackgroundColor [
+	^ Color gray lighter
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> when [
 	^ self programDir parent name
 ]
