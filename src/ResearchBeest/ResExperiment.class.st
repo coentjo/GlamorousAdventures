@@ -6,6 +6,12 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+ResExperiment >> refClass [
+
+	^ nil class
+]
+
+{ #category : 'as yet unclassified' }
 ResExperiment >> resultBackgroundColor [
 	^ Color orange
 ]

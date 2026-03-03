@@ -233,10 +233,9 @@ Research >> gtStagesMapFor: aView [
 				toCenterTop;
 				connectFrom: #yourself
 					toAll: [ :each | 
-						| pN |
-						pN := { 8 . 3 . 4} "each nextStagesIds".
 						allNodes
-							select: [ :node | pN anySatisfy: [ :stageID | stageID = 'node id' size ] ] ].
+							select: [ :node |  | b |
+							b := node class = each refClass ] ].
 			mondrian layout dominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
 				levelDistance: 20;

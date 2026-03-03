@@ -37,6 +37,12 @@ ResObject >> programDir: each [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> refClass [
+
+	^ self subclassResponsibility
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> researchProperty [
 	^ resProperty ifNil: [resProperty := OrderedCollection new]
 ]

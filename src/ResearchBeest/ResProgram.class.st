@@ -6,6 +6,12 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+ResProgram >> refClass [
+
+	^ ResProject
+]
+
+{ #category : 'as yet unclassified' }
 ResProgram >> resultBackgroundColor [
 	^ Color darkGray
 ]
