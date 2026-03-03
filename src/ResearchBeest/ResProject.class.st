@@ -18,6 +18,12 @@ ResProject >> printOn: aStream [
 ]
 
 { #category : 'as yet unclassified' }
+ResProject >> refClass [
+
+	^ ResExperiment
+]
+
+{ #category : 'as yet unclassified' }
 ResProject >> resultBackgroundColor [
 	^ Color blue
 ]
