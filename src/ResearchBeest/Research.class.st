@@ -172,9 +172,9 @@ Research >> gtStagesMapFor: aView [
 			| allNodes |
 			allNodes := self nodes.
 			mondrian nodes
-				shape: [ :aStage | 
-					| container statusColor programContainer duration |
-					statusColor := aStage resultBackgroundColor.
+				shape: [ :anItem | 
+					| container statusColor |
+					statusColor := anItem resultBackgroundColor.
 					container := BrHorizontalPane new
 							hExact: 200;
 							vFitContent;
@@ -183,23 +183,13 @@ Research >> gtStagesMapFor: aView [
 							margin: (BlInsets all: 10);
 							background: Color white;
 							zIndex: 1;
-							when: BlClickEvent do: [ :e | e target phlow spawnObject: aStage ].
-
-					programContainer := BrVerticalPane new
-							hMatchParent;
-							vFitContent;
-							clipChildren: false.
-					programContainer
-						addChild: (BrEditor new
-								text: aStage name asRopedText;
-								aptitude: BrGlamorousRegularEditorAptitude).
-
+							when: BlClickEvent do: [ :e | e target phlow spawnObject: anItem ].
 					container
 						addChild: (BrVerticalPane new
 								vMatchParent;
 								hExact: 15;
 								background: statusColor);
-						addChild: programContainer ];
+						addChild: (self itemContainer: anItem) ];
 				with: allNodes.
 			mondrian edges
 				shape: [ BlSigmoidElement new
@@ -224,6 +214,20 @@ Research >> gtStagesMapFor: aView [
 		actionButtonIcon: BrGlamorousVectorIcons refresh
 			tooltip: 'Update'
 			action: [ :aButton "self refreshNodesDictionary." :aTab | aTab viewContentElement phlow update ]
+]
+
+{ #category : 'as yet unclassified' }
+Research >> itemContainer: anItem [
+	| container |
+	container := BrVerticalPane new
+			hMatchParent;
+			vFitContent;
+			clipChildren: false.
+	container
+		addChild: (BrEditor new
+				text: anItem name asRopedText;
+				aptitude: BrGlamorousRegularEditorAptitude).
+	^ container
 ]
 
 { #category : 'as yet unclassified' }
