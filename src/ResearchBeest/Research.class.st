@@ -162,7 +162,8 @@ Research >> gtProjectsFor: aView [
 
 { #category : 'as yet unclassified' }
 Research >> gtStagesMapFor: aView [
-"copied from JcPipelineRun>>gtStagesMapFor: aView"
+	"copied from JcPipelineRun>>gtStagesMapFor: aView"
+
 	<gtView>
 	^ aView mondrian
 		title: 'map 1' translated;
@@ -175,7 +176,7 @@ Research >> gtStagesMapFor: aView [
 					| container statusColor programContainer duration |
 					statusColor := aStage resultBackgroundColor.
 					container := BrHorizontalPane new
-							hExact: 200 ;
+							hExact: 200;
 							vFitContent;
 							aptitude: BrShadowAptitude;
 							clipChildren: false;
@@ -183,7 +184,7 @@ Research >> gtStagesMapFor: aView [
 							background: Color white;
 							zIndex: 1;
 							when: BlClickEvent do: [ :e | e target phlow spawnObject: aStage ].
-							
+
 					programContainer := BrVerticalPane new
 							hMatchParent;
 							vFitContent;
@@ -192,29 +193,7 @@ Research >> gtStagesMapFor: aView [
 						addChild: (BrEditor new
 								text: aStage name asRopedText;
 								aptitude: BrGlamorousRegularEditorAptitude).
-								
-					duration := 4 second "aStage duration".
-					duration < 1 second
-						ifFalse: [ programContainer
-								addChild: (BrLabel new
-										margin: (BlInsets
-												top: 0
-												left: 5
-												bottom: 5
-												right: 5);
-										text: duration gtHumanReadableString asRopedText;
-										aptitude: (BrGlamorousLabelAptitude new foreground: Color gray)) ].
-					"failedExamples := 5 ""aStage failedTests size"".
-					failedExamples > 0
-						ifTrue: [ labelContainer
-								addChild: (BrLabel new
-										text: 'sometext';
-										margin: (BlInsets
-												top: 0
-												left: 5
-												bottom: 5
-												right: 5);
-										aptitude: (BrGlamorousLabelAptitude new foreground: Color gray)) ]."
+
 					container
 						addChild: (BrVerticalPane new
 								vMatchParent;
@@ -225,17 +204,18 @@ Research >> gtStagesMapFor: aView [
 			mondrian edges
 				shape: [ BlSigmoidElement new
 						zIndex: 0;
-						beVertical;
+						beHorizontal;
 						bendingPoint: 0.3;
 						sharpness: 0.1;
 						border: (BlBorder paint: (Color gray alpha: 0.2) width: 2) ];
-				fromCenterBottom;
-				toCenterTop;
+				fromRightCenter;
+				toLeftCenter;
 				connectFrom: #yourself
 					toAll: [ :each | 
 						allNodes
-							select: [ :node |  | b |
-							b := node class = each refClass ] ].
+							select: [ :node | 
+								| b |
+								b := node class = each refClass ] ].
 			mondrian layout dominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
 				levelDistance: 20;
@@ -243,9 +223,7 @@ Research >> gtStagesMapFor: aView [
 			mondrian ];
 		actionButtonIcon: BrGlamorousVectorIcons refresh
 			tooltip: 'Update'
-			action: [ :aButton :aTab | 
-				"self refreshNodesDictionary."
-				aTab viewContentElement phlow update ]
+			action: [ :aButton "self refreshNodesDictionary." :aTab | aTab viewContentElement phlow update ]
 ]
 
 { #category : 'as yet unclassified' }
