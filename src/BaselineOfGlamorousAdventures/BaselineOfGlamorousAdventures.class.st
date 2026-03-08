@@ -31,5 +31,7 @@ BaselineOfGlamorousAdventures >> baseline: spec [
 				package: #Lepiterinator ;
 				package: #Portflowionator; 
 				package: #PortfolioInsight;
-				package: #SemesterCalendarOverview ]
+				package: #SemesterCalendarOverview ;
+				package: #HBOi;
+				package: #ResearchBeest]
 ]
