@@ -17,6 +17,10 @@ ResObject class >> onDir: aDirRef [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> files [
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> name [
 	^ self programDir asFileReference name
 ]
