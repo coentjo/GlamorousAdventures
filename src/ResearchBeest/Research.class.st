@@ -64,14 +64,21 @@ Research >> gtDirsFor: aView [
 { #category : 'as yet unclassified' }
 Research >> gtExperimentsFor: aView [
 	<gtView>
-
 	^ aView columnedList
 		title: 'Experiments';
 		priority: 18;
-		items: self experiments ;
-		"column: 'parent' text: [ :each | each firstPropty parent basename ] width: 50;"
-		column: 'name' text: [ :each | each when ] width: 50;
-		column: 'name' text: [ :each | each name ]
+		items: (self experiments sort: [ :a :b | a when >= b when ]);
+		column: 'name'
+			text: [ :each | each when ]
+			width: 50;
+		column: 'name' text: [ :each | each name ];
+		actionButtonIcon: BrGlamorousVectorIcons browse
+			tooltip: 'open page'
+			action: [ :aButton | 
+				| fileRef |
+				fileRef := self experimentsDirectories.
+				Clipboard clipboardText: fileRef first name.
+				WebBrowser openOn: fileRef ]	
 ]
 
 { #category : 'as yet unclassified' }
