@@ -6,6 +6,16 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+ResExperiment >> gtFilesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Files';
+		priority: 5;
+		items: self files;
+		column: 'File' text: [ :each | each asString ]
+]
+
+{ #category : 'as yet unclassified' }
 ResExperiment >> refClass [
 
 	^ nil class

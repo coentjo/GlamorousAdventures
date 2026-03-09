@@ -18,6 +18,12 @@ ResObject class >> onDir: aDirRef [
 
 { #category : 'as yet unclassified' }
 ResObject >> files [
+	"for all dirs, add files"
+
+	| col |
+	col := OrderedCollection new.
+	resProperty do: [ :props | props files do: [ :file | col add: file ] ].
+	col
 ]
 
 { #category : 'as yet unclassified' }
