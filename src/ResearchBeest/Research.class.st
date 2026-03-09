@@ -179,24 +179,7 @@ Research >> gtStagesMapFor: aView [
 			| allNodes |
 			allNodes := self nodes.
 			mondrian nodes
-				shape: [ :anItem | 
-					| container statusColor |
-					statusColor := anItem resultBackgroundColor.
-					container := BrHorizontalPane new
-							hExact: 200;
-							vFitContent;
-							aptitude: BrShadowAptitude;
-							clipChildren: false;
-							margin: (BlInsets all: 10);
-							background: Color white;
-							zIndex: 1;
-							when: BlClickEvent do: [ :e | e target phlow spawnObject: anItem ].
-					container
-						addChild: (BrVerticalPane new
-								vMatchParent;
-								hExact: 15;
-								background: statusColor);
-						addChild: (self itemContainer: anItem) ];
+				shape: [ :anItem | self itemContainer: anItem ];
 				with: allNodes.
 			mondrian edges
 				shape: [ BlSigmoidElement new
@@ -225,6 +208,26 @@ Research >> gtStagesMapFor: aView [
 
 { #category : 'as yet unclassified' }
 Research >> itemContainer: anItem [
+	| container |
+	container := BrHorizontalPane new
+			hExact: 200;
+			vFitContent;
+			aptitude: BrShadowAptitude;
+			clipChildren: false;
+			margin: (BlInsets all: 10);
+			background: Color white;
+			zIndex: 1;
+			when: BlClickEvent do: [ :e | e target phlow spawnObject: anItem ].
+	^ container
+		addChild: (BrVerticalPane new
+				vMatchParent;
+				hExact: 15;
+				background: anItem resultBackgroundColor);
+		addChild: (self itemInfoContainer: anItem)
+]
+
+{ #category : 'as yet unclassified' }
+Research >> itemInfoContainer: anItem [
 	| container |
 	container := BrVerticalPane new
 			hMatchParent;
