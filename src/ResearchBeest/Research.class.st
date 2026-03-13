@@ -196,7 +196,7 @@ Research >> gtStagesMapFor: aView [
 							select: [ :node | 
 								| b |
 								b := node class = each refClass ] ].
-			mondrian layout dominanceTree
+			mondrian layout horizontalDominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
 				levelDistance: 20;
 				nodeDistance: 20.
