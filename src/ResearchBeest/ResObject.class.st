@@ -2,7 +2,8 @@ Class {
 	#name : 'ResObject',
 	#superclass : 'Object',
 	#instVars : [
-		'resProperty'
+		'resProperty',
+		'resObjectDir'
 	],
 	#category : 'ResearchBeest',
 	#package : 'ResearchBeest'
@@ -12,44 +13,68 @@ Class {
 ResObject class >> onDir: aDirRef [ 
 	"nog nie helemaal netjes... :-( "
 	^ self new
-		programDir: aDirRef;
+		resObjectDir: aDirRef;
 		yourself
 ]
 
 { #category : 'as yet unclassified' }
-ResObject >> files [
-	"for all dirs, add files"
+ResObject >> asBrItemsProvider [
+	^ BrSequenceableCollectionItemsProvider forCollection: self
+]
 
-	| col |
-	col := OrderedCollection new.
-	resProperty do: [ :props | props files do: [ :file | col add: file ] ].
-	col
+{ #category : 'as yet unclassified' }
+ResObject >> children [
+	"the children of a Program are Projects"
+
+	"the children of a Project are Experiments"
+
+	"in the directory there can be a file 'ResChildren.md' with per line the name of 1 child"
+
+	| dir |
+	dir := self resObjectDir.
+	^ dir files
+		detect: [ :file | file name = self researchObjectChildrenFilename ]
+		ifFound: [ :foundFile | Character lf split: foundFile contents ]
+		ifNone: [ OrderedCollection new ].
+	
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> files [
+
+	^ resObjectDir files reject: [ :f | f name = '.DS_Store' ].
+
 ]
 
 { #category : 'as yet unclassified' }
 ResObject >> name [
-	^ self programDir asFileReference name
+	^ self resObjectDir asFileReference name
 ]
 
 { #category : 'as yet unclassified' }
 ResObject >> printOn: aStream [
-	aStream nextPutAll: self programDir asString
-]
-
-{ #category : 'as yet unclassified' }
-ResObject >> programDir [
-	^ self researchProperty first
-]
-
-{ #category : 'as yet unclassified' }
-ResObject >> programDir: each [ 
-	^ self researchProperty add: each
+	aStream nextPutAll: self resObjectDir asString
 ]
 
 { #category : 'as yet unclassified' }
 ResObject >> refClass [
 
 	^ self subclassResponsibility
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> resObjectDir [
+	^ resObjectDir
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> resObjectDir: aDir [ 
+	resObjectDir := aDir
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> researchObjectChildrenFilename [
+	^ 'ResearchObjectChildren.md'
 ]
 
 { #category : 'as yet unclassified' }
@@ -64,5 +89,5 @@ ResObject >> resultBackgroundColor [
 
 { #category : 'as yet unclassified' }
 ResObject >> when [
-	^ self programDir parent name
+	^ self resObjectDir parent name
 ]

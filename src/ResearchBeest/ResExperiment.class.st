@@ -12,7 +12,7 @@ ResExperiment >> gtFilesFor: aView [
 		title: 'Files';
 		priority: 5;
 		items: self files;
-		column: 'File' text: [ :each | each asString ]
+		column: 'File' text: [ :each | each  ]
 ]
 
 { #category : 'as yet unclassified' }
