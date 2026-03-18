@@ -5,6 +5,16 @@ Class {
 	#package : 'ResearchBeest'
 }
 
+{ #category : 'as yet unclassified' }
+ResProject >> gtLiveFor: aView [
+	<gtView>
+	^ aView list
+		name: 'Project';
+		priority: 5;
+		items: { self name}
+		
+]
+
 { #category : 'printing' }
 ResProject >> printOn: aStream [
 	"Append to the argument, aStream, a sequence of characters that
