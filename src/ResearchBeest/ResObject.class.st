@@ -47,6 +47,39 @@ ResObject >> files [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> gtActionOpenInCursorFor: anAction [
+	<gtAction>
+	| dir |
+	dir := self resObjectDir.
+	(dir exists or: [ dir path isNetworkPath not ])
+		ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		icon: BrGlamorousVectorIcons classicon;
+		tooltip: 'Open in Cursor';
+		action: [ | process |
+			[ process := GtExternalProcessBuilder new
+					command: 'openInCursor';
+					arg: self resObjectDir pathString;
+					pipeStdout;
+					spawn ]
+				onErrorDo: [ self inform: 'Check from CLI there is a runnable script openInCursor in PATH' ] ]
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> gtActionWebBrowseFor: anAction [
+	<gtAction>
+	| dir |
+	dir := self resObjectDir.
+	(dir exists or: [ dir path isNetworkPath not ]) ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		  icon: BrGlamorousVectorIcons link;
+		  tooltip: 'Open in operating system';
+		  action: [ WebBrowser openOn: dir fullName]
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> name [
 	^ self resObjectDir asFileReference name
 ]

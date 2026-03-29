@@ -12,7 +12,17 @@ ResExperiment >> gtFilesFor: aView [
 		title: 'Files';
 		priority: 5;
 		items: self files;
-		column: 'File' text: [ :each | each  ]
+		column: 'File' text: [ :each | each ];
+		actionButtonIcon: BrGlamorousVectorIcons classicon
+			tooltip: 'open in cursor'
+			action: [ :aButton | 
+				| process |
+				[ process := GtExternalProcessBuilder new
+						command: 'openInCursor';
+						arg: self resObjectDir pathString;
+						pipeStdout;
+						spawn ]
+					onErrorDo: [ self inform: 'Check from CLI there is a runnable script openInCursor in PATH' ] ]
 ]
 
 { #category : 'as yet unclassified' }

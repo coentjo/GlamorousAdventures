@@ -26,6 +26,11 @@ Research >> addProjectsDirs: projectsDir [
 ]
 
 { #category : 'as yet unclassified' }
+Research >> createExperiment [
+	self experimentsDirectories 
+]
+
+{ #category : 'as yet unclassified' }
 Research >> exampleSimpleResearch [
 	<gtExample>
 	| aResearch |
@@ -72,13 +77,17 @@ Research >> gtExperimentsFor: aView [
 			text: [ :each | each when ]
 			width: 50;
 		column: 'name' text: [ :each | each name ];
+		actionButtonIcon: BrGlamorousVectorIcons add
+			label: 'add'
+			tooltip: 'create new experiment'
+			action: [ :aButton | self createExperiment ];
 		actionButtonIcon: BrGlamorousVectorIcons browse
 			tooltip: 'open page'
 			action: [ :aButton | 
 				| fileRef |
 				fileRef := self experimentsDirectories.
 				Clipboard clipboardText: fileRef first name.
-				WebBrowser openOn: fileRef ]	
+				WebBrowser openOn: fileRef ]
 ]
 
 { #category : 'as yet unclassified' }
