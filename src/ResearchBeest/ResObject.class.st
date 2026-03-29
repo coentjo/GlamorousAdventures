@@ -67,6 +67,26 @@ ResObject >> gtActionOpenInCursorFor: anAction [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> gtActionOpenVsCodeFor: anAction [
+	<gtAction>
+	| dir |
+	dir := self resObjectDir.
+	(dir exists or: [ dir path isNetworkPath not ])
+		ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		icon: BrGlamorousVectorIcons packageicon;
+		tooltip: 'Open in VS Code';
+		action: [ | process |
+			[ process := GtExternalProcessBuilder new
+					command: 'openInVsCode';
+					arg: self resObjectDir pathString;
+					pipeStdout;
+					spawn ]
+				onErrorDo: [ self inform: 'Check from CLI there is a runnable script openInVsCode in PATH' ] ]
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> gtActionWebBrowseFor: anAction [
 	<gtAction>
 	| dir |
