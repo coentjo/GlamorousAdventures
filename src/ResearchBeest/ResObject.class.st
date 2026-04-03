@@ -23,19 +23,20 @@ ResObject >> asBrItemsProvider [
 ]
 
 { #category : 'as yet unclassified' }
-ResObject >> children [
+ResObject >> childNames [
 	"the children of a Program are Projects"
 
 	"the children of a Project are Experiments"
 
 	"in the directory there can be a file 'ResChildren.md' with per line the name of 1 child"
 
-	| dir |
-	dir := self resObjectDir.
-	^ dir files
+	|  childrenFile |
+	childrenFile := self researchObjectChildrenFile
+	
+	"^ dir files
 		detect: [ :file | file name = self researchObjectChildrenFilename ]
 		ifFound: [ :foundFile | Character lf split: foundFile contents ]
-		ifNone: [ OrderedCollection new ].
+		ifNone: [ OrderedCollection new ]."
 	
 ]
 
@@ -100,8 +101,20 @@ ResObject >> gtActionWebBrowseFor: anAction [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> gtProjectsFor: aView [
+	<gtView>
+	self researchObjectChildrenFile ensureCreateFile.
+	^ aView forward
+		title: 'Edit Children';
+		priority: 12;
+		object: self researchObjectChildrenFile ;
+		view: #gtContentsFor: ;
+		actionButtonLabel: 'edit' action: [ :aButton | self researchObjectChildrenFile value ]
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> name [
-	^ self resObjectDir asFileReference name
+	^ self resObjectDir asFileReference pathString
 ]
 
 { #category : 'as yet unclassified' }
@@ -110,7 +123,7 @@ ResObject >> printOn: aStream [
 ]
 
 { #category : 'as yet unclassified' }
-ResObject >> refClass [
+ResObject >> refChildrenClass [
 
 	^ self subclassResponsibility
 ]
@@ -123,6 +136,11 @@ ResObject >> resObjectDir [
 { #category : 'as yet unclassified' }
 ResObject >> resObjectDir: aDir [ 
 	resObjectDir := aDir
+]
+
+{ #category : 'accessing' }
+ResObject >> researchObjectChildrenFile [
+	^ self resObjectDir / self researchObjectChildrenFilename
 ]
 
 { #category : 'as yet unclassified' }

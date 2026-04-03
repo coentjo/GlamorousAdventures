@@ -26,8 +26,73 @@ Research >> addProjectsDirs: projectsDir [
 ]
 
 { #category : 'as yet unclassified' }
+Research >> allProjects [
+	| prjs |
+	prjs := OrderedCollection new.
+	self projectsDirectories do: [ :each | 
+		each directories do: [ :file | 
+			prjs add: file ] ].
+	^ prjs collect: [ :each | ResProject onDir: each ]
+]
+
+{ #category : 'as yet unclassified' }
+Research >> connectedTo: allNodes [
+	^ [ :each | 
+	allNodes
+		select: [ :node | 
+			"node class = each refClass and: [ node name < each name ] " 
+			self  class =  node refChildrenClass
+			] ]
+]
+
+{ #category : 'accessing' }
+Research >> createConnectionDictionaries [
+	"A program is connected to several projects and a project in its turn can be connected to several experiments. To set up an initial connection repository, this method will create a complete linked set of dictionaries. so that means that every program is connected to every project and also where every project is connected to every experiment so that's for an initial setting ."
+
+	<gtExample>
+	| research |
+	research := self exampleDefaultResearch.
+	self createConnectionDictionariesFor: research
+]
+
+{ #category : 'accessing' }
+Research >> createConnectionDictionariesFor: research [
+	| connectProgramToProject allProjectNames allExperimentNames connectProjectToExperiment allProgramNames |
+	connectProgramToProject := Dictionary new.
+	connectProjectToExperiment := Dictionary new.
+	allProgramNames := research programs collect: [ :each | each name ].
+	allProjectNames := research projects collect: [ :each | each name ].
+	allExperimentNames := research experiments collect: [ :each | each name ].
+	allProgramNames
+		do: [ :programName | connectProgramToProject at: programName put: allProjectNames ].
+	allProjectNames
+		do: [ :projectName | connectProjectToExperiment at: projectName put: allProjectNames ].
+	{connectProgramToProject.
+		connectProjectToExperiment}
+]
+
+{ #category : 'as yet unclassified' }
 Research >> createExperiment [
 	self experimentsDirectories 
+]
+
+{ #category : 'accessing' }
+Research >> exampleDefaultResearch [
+	<gtExample>
+	"yes I know this is not exactly an example as it is meant to be because I use specific specific directories which on my laptop contain specific structure. so for another person on another laptop it won't work this way. But well, it's agile. Let's keep it going. "
+	| programsDirs projectsDirs experimentsDirs |
+	programsDirs := (FileLocator home / 'Programs') directories
+			reject: [ :each | each basename beginsWith: '.' ].
+	projectsDirs := (FileLocator home / 'Projects') directories
+			reject: [ :each | each basename beginsWith: '.' ].
+	experimentsDirs := (FileLocator home / 'Experiments') directories
+			reject: [ :each | each basename beginsWith: '.' ].
+
+	^ Research new
+		addProgramsDirs: programsDirs;
+		addProjectsDirs: projectsDirs;
+		addExperimentsDirs: experimentsDirs;
+		yourself
 ]
 
 { #category : 'as yet unclassified' }
@@ -69,10 +134,12 @@ Research >> gtDirsFor: aView [
 { #category : 'as yet unclassified' }
 Research >> gtExperimentsFor: aView [
 	<gtView>
+	| experiments |
+	experiments := self experiments sort: [ :a :b | a when >= b when ].
 	^ aView columnedList
 		title: 'Experiments';
 		priority: 18;
-		items: (self experiments sort: [ :a :b | a when >= b when ]);
+		items: experiments;
 		column: 'name'
 			text: [ :each | each when ]
 			width: 50;
@@ -81,6 +148,13 @@ Research >> gtExperimentsFor: aView [
 			label: 'add'
 			tooltip: 'create new experiment'
 			action: [ :aButton | self createExperiment ];
+		actionButtonIcon: BrGlamorousVectorIcons add
+			label: 'copy all paths'
+			tooltip: 'copy all paths for in file ResearchObjectChildren.md'
+			action: [ :aButton | 
+				| allPaths |
+				allPaths :=  experiments collect: [ :each | each resObjectDir pathString ].
+				Clipboard clipboardText: (Character lf join: allPaths)];
 		actionButtonIcon: BrGlamorousVectorIcons browse
 			tooltip: 'open page'
 			action: [ :aButton | 
@@ -88,6 +162,7 @@ Research >> gtExperimentsFor: aView [
 				fileRef := self experimentsDirectories.
 				Clipboard clipboardText: fileRef first name.
 				WebBrowser openOn: fileRef ]
+				
 ]
 
 { #category : 'as yet unclassified' }
@@ -170,7 +245,7 @@ Research >> gtProjectsFor: aView [
 	^ aView columnedList
 		title: 'Projects';
 		priority: 16;
-		items: self projects;
+		items: self allProjects;
 		"column: 'parent' text: [ :each | each firstPropty parent basename ] width: 50;"
 		column: 'name' text: [ :each | each when ] width: 50;
 		column: 'name' text: [ :each | each name ]
@@ -181,6 +256,8 @@ Research >> gtStagesMapFor: aView [
 	"copied from JcPipelineRun>>gtStagesMapFor: aView"
 
 	<gtView>
+	| connections |
+	connections := Dictionary new.
 	^ aView mondrian
 		title: 'map 1' translated;
 		priority: 4;
@@ -202,9 +279,21 @@ Research >> gtStagesMapFor: aView [
 				connectFrom: #yourself
 					toAll: [ :each | 
 						allNodes
-							select: [ :node | 
-								| b |
-								b := node class = each refClass ] ].
+							select: [  :node | 
+							"node class = each refClass and: [ node name < each name ] "
+							"b := node childNames contains: each name ."
+							| b |
+							b := node class = each refChildrenClass.
+							"b ifTrue: [
+					connections 
+						at: node name 
+						update: [ :childrenNameList | childrenNameList halt; add: each name ] 
+						initial: [ | col |
+						col := OrderedCollection new.
+						col halt; add: each name.
+						col ] ] ."
+							b
+							] ].
 			mondrian layout horizontalDominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
 				levelDistance: 20;
@@ -286,4 +375,8 @@ Research >> projects [
 { #category : 'accessing' }
 Research >> projectsDirectories [
 	^ projectsDirectories ifNil: [projectsDirectories := OrderedCollection new]
+]
+
+{ #category : 'accessing' }
+Research >> simpleResearch [
 ]

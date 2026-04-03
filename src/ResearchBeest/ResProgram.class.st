@@ -5,17 +5,16 @@ Class {
 	#package : 'ResearchBeest'
 }
 
-{ #category : 'as yet unclassified' }
-ResProgram >> gtProjectsFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Projects';
-		priority: 12;
-		items: self children
+{ #category : 'accessing' }
+ResProgram >> potentialChildren [
+	"for a Program the children are of type Project, For a Project the type of the children is an Experiment , The method >>refClass gives you the type of your children "
+	| childClass |
+	childClass := self refChildrenClass.
+	
 ]
 
 { #category : 'as yet unclassified' }
-ResProgram >> refClass [
+ResProgram >> refChildrenClass [
 
 	^ ResProject
 ]

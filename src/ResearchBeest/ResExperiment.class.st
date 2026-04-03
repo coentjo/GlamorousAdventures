@@ -26,7 +26,7 @@ ResExperiment >> gtFilesFor: aView [
 ]
 
 { #category : 'as yet unclassified' }
-ResExperiment >> refClass [
+ResExperiment >> refChildrenClass [
 
 	^ nil class
 ]

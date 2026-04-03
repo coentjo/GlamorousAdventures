@@ -9,8 +9,8 @@ Class {
 ResProject >> gtLiveFor: aView [
 	<gtView>
 	^ aView list
-		name: 'Project';
-		priority: 5;
+		title: 'Project';
+		priority: 4;
 		items: { self name}
 		
 ]
@@ -28,7 +28,7 @@ ResProject >> printOn: aStream [
 ]
 
 { #category : 'as yet unclassified' }
-ResProject >> refClass [
+ResProject >> refChildrenClass [
 
 	^ ResExperiment
 ]
