@@ -108,8 +108,7 @@ ResObject >> gtChildrenFor: aView [
 		title: 'Edit Children';
 		priority: 12;
 		object: self researchObjectChildrenFile ;
-		view: #gtContentsFor: ;
-		actionButtonLabel: 'edit' action: [ :aButton | self researchObjectChildrenFile value ]
+		view: #gtContentsFor: 
 ]
 
 { #category : 'as yet unclassified' }
@@ -136,6 +135,14 @@ ResObject >> resObjectDir [
 { #category : 'as yet unclassified' }
 ResObject >> resObjectDir: aDir [ 
 	resObjectDir := aDir
+]
+
+{ #category : 'accessing' }
+ResObject >> researchChildren [
+	"According to the resourceObjectChildrenFile "
+	| paths |
+	paths :=  Character lf split: (self researchObjectChildrenFile ensureCreateFile; contents).
+	^ paths collect: [ :each | self refChildrenClass onDir: (each asFileReference)]
 ]
 
 { #category : 'accessing' }

@@ -32,6 +32,11 @@ ResExperiment >> refChildrenClass [
 ]
 
 { #category : 'as yet unclassified' }
+ResExperiment >> researchChildren [
+	^ {}
+]
+
+{ #category : 'as yet unclassified' }
 ResExperiment >> resultBackgroundColor [
 	^ Color orange
 ]

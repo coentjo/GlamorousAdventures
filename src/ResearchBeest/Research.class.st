@@ -304,23 +304,9 @@ Research >> gtStagesMapFor: aView [
 				fromRightCenter;
 				toLeftCenter;
 				connectFrom: #yourself
-					toAll: [ :each | 
-						allNodes
-							select: [  :node | 
-							"node class = each refClass and: [ node name < each name ] "
-							"b := node childNames contains: each name ."
-							| b |
-							b := node class = each refChildrenClass.
-							"b ifTrue: [
-					connections 
-						at: node name 
-						update: [ :childrenNameList | childrenNameList halt; add: each name ] 
-						initial: [ | col |
-						col := OrderedCollection new.
-						col halt; add: each name.
-						col ] ] ."
-							b
-							] ].
+					toAll: [ :each | allNodes select: [ :node | each researchChildren contains: [:n | n name = node name]]]
+				"connectFrom: #yourself
+					toAll: [ :each | allNodes select: [ :node | node class = each refChildrenClass ] ]".
 			mondrian layout horizontalDominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
 				levelDistance: 20;
