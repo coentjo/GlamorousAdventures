@@ -101,7 +101,7 @@ ResObject >> gtActionWebBrowseFor: anAction [
 ]
 
 { #category : 'as yet unclassified' }
-ResObject >> gtProjectsFor: aView [
+ResObject >> gtChildrenFor: aView [
 	<gtView>
 	self researchObjectChildrenFile ensureCreateFile.
 	^ aView forward

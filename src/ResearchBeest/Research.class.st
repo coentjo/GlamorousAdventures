@@ -26,6 +26,15 @@ Research >> addProjectsDirs: projectsDir [
 ]
 
 { #category : 'as yet unclassified' }
+Research >> allPrograms [
+	| prgs |
+	prgs := OrderedCollection new.
+	self programsDirectories
+		do: [ :whenDir | prgs addAll: whenDir directories ].
+	^ prgs collect: [ :each | ResProgram onDir: each ]
+]
+
+{ #category : 'as yet unclassified' }
 Research >> allProjects [
 	| prjs |
 	prjs := OrderedCollection new.
@@ -60,7 +69,7 @@ Research >> createConnectionDictionariesFor: research [
 	| connectProgramToProject allProjectNames allExperimentNames connectProjectToExperiment allProgramNames |
 	connectProgramToProject := Dictionary new.
 	connectProjectToExperiment := Dictionary new.
-	allProgramNames := research programs collect: [ :each | each name ].
+	allProgramNames := research allPrograms collect: [ :each | each name ].
 	allProjectNames := research projects collect: [ :each | each name ].
 	allExperimentNames := research experiments collect: [ :each | each name ].
 	allProgramNames
@@ -102,7 +111,7 @@ Research >> exampleSimpleResearch [
 	aResearch := Research new
 		addProgramsDirs: { FileReference gtExampleDirectory }
 		.
-	self assert: aResearch programs size equals: aResearch programs size.
+	self assert: aResearch allPrograms size equals: aResearch allPrograms size.
 	^ aResearch
 ]
 
@@ -148,9 +157,8 @@ Research >> gtExperimentsFor: aView [
 			label: 'add'
 			tooltip: 'create new experiment'
 			action: [ :aButton | self createExperiment ];
-		actionButtonIcon: BrGlamorousVectorIcons add
-			label: 'copy all paths'
-			tooltip: 'copy all paths for in file ResearchObjectChildren.md'
+		actionButtonLabel: 'copy all paths'
+			tooltip: 'copy all paths of all potential children; to be used in file ResearchObjectChildren.md'
 			action: [ :aButton | 
 				| allPaths |
 				allPaths :=  experiments collect: [ :each | each resObjectDir pathString ].
@@ -163,6 +171,16 @@ Research >> gtExperimentsFor: aView [
 				Clipboard clipboardText: fileRef first name.
 				WebBrowser openOn: fileRef ]
 				
+]
+
+{ #category : 'as yet unclassified' }
+Research >> gtLiveFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Program';
+		priority: 4;
+		items: { self name}
+		
 ]
 
 { #category : 'as yet unclassified' }
@@ -232,7 +250,7 @@ Research >> gtProgramsFor: aView [
 	^ aView columnedList
 		title: 'Programs';
 		priority: 14;
-		items: self programs ;
+		items: self allPrograms ;
 		"column: 'parent' text: [ :each | each firstPropty parent basename ] width: 50;"
 		column: 'name' text: [ :each | each when ] width: 50;
 		column: 'name' text: [ :each | each name ]
@@ -242,13 +260,22 @@ Research >> gtProgramsFor: aView [
 Research >> gtProjectsFor: aView [
 	<gtView>
 
+	| allProjects |
+	allProjects := self allProjects.
 	^ aView columnedList
 		title: 'Projects';
 		priority: 16;
-		items: self allProjects;
+		items: allProjects;
 		"column: 'parent' text: [ :each | each firstPropty parent basename ] width: 50;"
 		column: 'name' text: [ :each | each when ] width: 50;
-		column: 'name' text: [ :each | each name ]
+		column: 'name' text: [ :each | each name ];
+				actionButtonLabel: 'copy all paths'
+			tooltip: 'copy all paths of all potential children; to be used in file ResearchObjectChildren.md'
+			action: [ :aButton | 
+				| allPaths |
+				allPaths :=  allProjects collect: [ :each | each resObjectDir pathString ].
+				Clipboard clipboardText: (Character lf join: allPaths)]
+
 ]
 
 { #category : 'as yet unclassified' }
@@ -345,16 +372,7 @@ Research >> mooseModel [
 
 { #category : 'as yet unclassified' }
 Research >> nodes [
-	^ self programs , self projects , self experiments
-]
-
-{ #category : 'as yet unclassified' }
-Research >> programs [
-	| prgs |
-	prgs := OrderedCollection new.
-	self programsDirectories
-		do: [ :whenDir | prgs addAll: whenDir directories ].
-	^ prgs collect: [ :each | ResProgram onDir: each ]
+	^ self allPrograms , self projects , self experiments
 ]
 
 { #category : 'accessing' }
