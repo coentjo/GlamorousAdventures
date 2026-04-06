@@ -112,6 +112,75 @@ ResObject >> gtChildrenFor: aView [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> gtLiveFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Live';
+		priority: 5;
+		painting: [ :mondrian | 
+			| allNodes |
+			allNodes := { self }, self researchChildren.
+			mondrian nodes
+				shape: [ :anItem | self itemContainer: anItem ];
+				with: allNodes.
+			mondrian edges
+				shape: [ BlSigmoidElement new
+						zIndex: 0;
+						beHorizontal;
+						bendingPoint: 0.3;
+						sharpness: 0.1;
+						border: (BlBorder paint: (Color gray alpha: 0.2) width: 2) ];
+				fromRightCenter;
+				toLeftCenter;
+				connectFrom: #yourself
+					"toAll: [ :each | each researchChildren ]."
+					toAll: [ :each | allNodes select: [ :node | each researchChildren contains: [:n | n name = node name]]].
+			mondrian layout horizontalDominanceTree
+				nodesAlignment: GtGradTreeNodesCenterAlignment new;
+				levelDistance: 20;
+				nodeDistance: 20.
+			mondrian ];
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+			tooltip: 'Update'
+			action: [ :aButton "self refreshNodesDictionary." :aTab | aTab viewContentElement phlow update ]
+		
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> itemContainer: anItem [
+	| container |
+	container := BrHorizontalPane new
+			hExact: 200;
+			vFitContent;
+			aptitude: BrShadowAptitude;
+			clipChildren: false;
+			margin: (BlInsets all: 10);
+			background: Color white;
+			zIndex: 1;
+			when: BlClickEvent do: [ :e | e target phlow spawnObject: anItem ].
+	^ container
+		addChild: (BrVerticalPane new
+				vMatchParent;
+				hExact: 15;
+				background: anItem resultBackgroundColor);
+		addChild: (self itemInfoContainer: anItem)
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> itemInfoContainer: anItem [
+	| container |
+	container := BrVerticalPane new
+			hMatchParent;
+			vFitContent;
+			clipChildren: false.
+	container
+		addChild: (BrEditor new
+				text: anItem name asRopedText;
+				aptitude: BrGlamorousRegularEditorAptitude).
+	^ container
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> name [
 	^ self resObjectDir asFileReference pathString
 ]
@@ -142,6 +211,8 @@ ResObject >> researchChildren [
 	"According to the resourceObjectChildrenFile "
 	| paths |
 	paths :=  Character lf split: (self researchObjectChildrenFile ensureCreateFile; contents).
+	"reject empty lines:"
+	paths := paths reject: [ :each | ' *' matches: each ].
 	^ paths collect: [ :each | self refChildrenClass onDir: (each asFileReference)]
 ]
 

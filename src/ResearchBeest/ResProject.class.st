@@ -6,7 +6,7 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-ResProject >> gtLiveFor: aView [
+ResProject >> gtLive2For: aView [
 	<gtView>
 	^ aView list
 		title: 'Project';
