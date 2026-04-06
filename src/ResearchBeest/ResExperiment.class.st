@@ -26,6 +26,16 @@ ResExperiment >> gtFilesFor: aView [
 ]
 
 { #category : 'as yet unclassified' }
+ResExperiment >> gtTreeFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Tree';
+		priority: 4;
+		object: [self resObjectDir];
+		view: #gtTreeFor:
+]
+
+{ #category : 'as yet unclassified' }
 ResExperiment >> refChildrenClass [
 
 	^ nil class

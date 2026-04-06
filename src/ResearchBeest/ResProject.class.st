@@ -10,7 +10,7 @@ ResProject >> gtLive2For: aView [
 	<gtView>
 	^ aView list
 		title: 'Project';
-		priority: 4;
+		priority: 7;
 		items: { self name}
 		
 ]
