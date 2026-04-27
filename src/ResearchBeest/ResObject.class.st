@@ -107,8 +107,12 @@ ResObject >> gtChildrenFor: aView [
 	^ aView forward
 		title: 'Edit Children';
 		priority: 12;
-		object: self researchObjectChildrenFile ;
-		view: #gtContentsFor: 
+		object: self researchObjectChildrenFile;
+		view: #gtContentsFor:;
+		actionButtonLabel: 'Create'
+			tooltip: 'Create children that don''t exist yet.'
+			action: [ self researchChildren
+					do: [ :each | each name asFileReference ensureCreateDirectory ] ]
 ]
 
 { #category : 'as yet unclassified' }

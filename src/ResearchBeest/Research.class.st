@@ -192,8 +192,9 @@ Research >> gtProgramsFor: aView [
 		priority: 14;
 		items: self allPrograms ;
 		"column: 'parent' text: [ :each | each firstPropty parent basename ] width: 50;"
-		column: 'name' text: [ :each | each when ] width: 50;
-		column: 'name' text: [ :each | each name ]
+		column: 'when' text: [ :each | each when ] width: 50;
+"		column: 'name' text: [ :each | each firstPropty basename ];"
+		column: 'path' text: [ :each | each name ]
 ]
 
 { #category : 'as yet unclassified' }
