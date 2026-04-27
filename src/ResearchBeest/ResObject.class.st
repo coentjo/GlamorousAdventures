@@ -48,6 +48,20 @@ ResObject >> files [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> gtActionCopyPathFor: anAction [
+	<gtAction>
+	| dir |
+	dir := self resObjectDir.
+	(dir exists or: [ dir path isNetworkPath not ])
+		ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		icon: BrGlamorousVectorIcons copyToClipboard;
+		tooltip: 'Open in Cursor';
+		action: [ Clipboard clipboardText: self resObjectDir pathString ]
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> gtActionOpenInCursorFor: anAction [
 	<gtAction>
 	| dir |
@@ -76,7 +90,7 @@ ResObject >> gtActionOpenVsCodeFor: anAction [
 		ifFalse: [ ^ anAction noAction ].
 
 	^ anAction button
-		icon: BrGlamorousVectorIcons packageicon;
+		icon: BrGlamorousVectorIcons blackcircle ;
 		tooltip: 'Open in VS Code';
 		action: [ | process |
 			[ process := GtExternalProcessBuilder new
