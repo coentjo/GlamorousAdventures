@@ -57,7 +57,7 @@ ResObject >> gtActionCopyPathFor: anAction [
 
 	^ anAction button
 		icon: BrGlamorousVectorIcons copyToClipboard;
-		tooltip: 'Open in Cursor';
+		tooltip: 'Copy Path';
 		action: [ Clipboard clipboardText: self resObjectDir pathString ]
 ]
 
