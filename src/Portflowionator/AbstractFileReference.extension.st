@@ -103,24 +103,24 @@ AbstractFileReference >> gtPandocFor: aView [
 ]
 
 { #category : '*Portflowionator' }
-AbstractFileReference >> gtSummaryFor: aView [
+AbstractFileReference >> gtQuartoYmlFor: aView [
+	"show contents of _quarto.yml , double click on line with '.qml' opens that qml-file "
+
 	<gtView>
-	| eventLoop |
-	self isFile ifFalse: [ ^ aView empty ].
-	[ self readStreamDo: [ :s | s next: 1000 ] ]
-		on: ZnInvalidUTF8
-		do: [ ^ aView empty ].
-
-	eventLoop := self watcher startLoop.
-
-	^ aView explicit
-		title: 'Summary' translated;
-		priority: 53;
-		actionButtonIcon: BrGlamorousIcons bothsides
-			action: [ :aButton | 
-				| md |
-				md := self createSummaryForMySelf.
-				aButton phlow spawnObject: md ];
-		updateWhen: GtFileWatcherModificationAnnouncement in: eventLoop announcer;
-		stencil: [ self gtTextView: self ]
+	| parser styler |
+	parser := YAMLParser.
+	styler := parser gtStyler.
+	(self isFile and: [ self name = '_quarto.yml' ]) ifFalse: [ ^ aView empty ].
+	^ aView list
+		title: 'Quarto';
+		priority: 7;
+		items: (Character lf split: self contents);
+		send: [ :line | 
+			(line value endsWith: '.qmd')
+				ifTrue: ["open .qmd file"
+					| lineParts file |
+					lineParts := Character space split: line.
+					file := self parent / lineParts last.					
+				] ifFalse: [line]
+		]
 ]

@@ -64,8 +64,7 @@ AbstractFileReference >> gtPythonFor: aView [
 
 { #category : '*Feedbackinator' }
 AbstractFileReference >> gtTextView: aText [
-	| pane editor editorPane changeBlock originalText toolbar saveBlock pre |
-	pre := 'This is a summary'.
+	| pane editor editorPane changeBlock originalText toolbar saveBlock |
 	originalText := BlRunRopedText file: aText asFileReference.
 	pane := BrVerticalPane new matchParent.
 	editorPane := BrHorizontalPane new matchParent.
