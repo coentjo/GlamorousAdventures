@@ -111,16 +111,17 @@ AbstractFileReference >> gtQuartoYmlFor: aView [
 	parser := YAMLParser.
 	styler := parser gtStyler.
 	(self isFile and: [ self name = '_quarto.yml' ]) ifFalse: [ ^ aView empty ].
-	^ aView list
+	^ aView columnedList
 		title: 'Quarto';
 		priority: 7;
 		items: (Character lf split: self contents);
+		column: 'line' text: #yourself;
 		send: [ :line | 
 			(line value endsWith: '.qmd')
-				ifTrue: ["open .qmd file"
-					| lineParts file |
+				ifTrue: [  "open .qmd file"| lineParts |
 					lineParts := Character space split: line.
-					file := self parent / lineParts last.					
-				] ifFalse: [line]
-		]
+					self parent / lineParts last ]
+				ifFalse: [ (line value endsWith: '"')
+						ifTrue: [ line asRopedText background: Color green ]
+						ifFalse: [ line ] ] ]
 ]
