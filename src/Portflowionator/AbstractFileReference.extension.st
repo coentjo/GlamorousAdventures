@@ -115,13 +115,18 @@ AbstractFileReference >> gtQuartoYmlFor: aView [
 		title: 'Quarto';
 		priority: 7;
 		items: (Character lf split: self contents);
-		column: 'line' text: #yourself;
+		column: 'line' text: [ :line | 
+			(line value endsWith: '.qmd')
+				ifTrue: [  "open .qmd file""| lineParts |" line
+					"lineParts := Character space split: line.
+					self parent / lineParts last" ]
+				ifFalse: [ (line value endsWith: '"')
+						ifTrue: [line asRopedText background: Color green ]
+						ifFalse: [line ] ] ];
 		send: [ :line | 
 			(line value endsWith: '.qmd')
 				ifTrue: [  "open .qmd file"| lineParts |
 					lineParts := Character space split: line.
 					self parent / lineParts last ]
-				ifFalse: [ (line value endsWith: '"')
-						ifTrue: [ line asRopedText background: Color green ]
-						ifFalse: [ line ] ] ]
+				ifFalse: [ line  ] ]
 ]

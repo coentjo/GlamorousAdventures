@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-26T18:46:34.559581+02:00"
+									"dateAndTimeString" : "2024-10-27T11:34:47.966967+01:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "- for local use you need Ollama "
+							"string" : "- for local use you need Ollama to be installed. "
 						}
 					]
 				},

@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-26T18:46:16.249117+02:00"
+									"dateAndTimeString" : "2026-05-02T14:23:42.766076+02:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "- download en open [Glamorous Toolkit](https://gtoolkit.com/)"
+							"string" : "- download and open [Glamorous Toolkit](https://gtoolkit.com/)"
 						},
 						{
 							"__type" : "textSnippet",
