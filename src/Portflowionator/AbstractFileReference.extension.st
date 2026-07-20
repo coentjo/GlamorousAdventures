@@ -39,6 +39,17 @@ AbstractFileReference >> createSummaryForMySelf [
 ]
 
 { #category : '*Portflowionator' }
+AbstractFileReference >> gtActionCopyPathFor: anAction [
+	<gtAction>
+	(self exists or: [ self path isNetworkPath not ]) ifFalse: [ ^ anAction noAction ].
+
+	^ anAction button
+		  icon: BrGlamorousVectorIcons copyToClipboard;
+		  tooltip: 'Copy path';
+		  action: [ Clipboard clipboardText: self fullName ]
+]
+
+{ #category : '*Portflowionator' }
 AbstractFileReference >> gtDiffFor: aView [
 	<gtView>
 	| eventLoop |
