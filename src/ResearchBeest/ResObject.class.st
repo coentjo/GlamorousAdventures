@@ -11,9 +11,9 @@ Class {
 
 { #category : 'as yet unclassified' }
 ResObject class >> onDir: aDirRef [ 
-	"nog nie helemaal netjes... :-( "
+	"Create a ResObject in aDirRef"
 	^ self new
-		resObjectDir: aDirRef;
+		resObjectDir: aDirRef asFileReference;
 		yourself
 ]
 
