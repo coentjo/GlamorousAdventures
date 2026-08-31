@@ -33,6 +33,11 @@ SemesterWeek >> printOn: aStream [
 ]
 
 { #category : 'accessing' }
+SemesterWeek >> startDate [
+	^ startDate
+]
+
+{ #category : 'accessing' }
 SemesterWeek >> startingAt: aStartDate [ 
 	startDate := aStartDate
 ]

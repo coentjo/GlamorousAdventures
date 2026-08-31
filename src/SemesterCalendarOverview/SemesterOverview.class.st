@@ -95,17 +95,29 @@ SemesterOverview >> addWeek: weekNr startingat: startDate [
 { #category : 'datums' }
 SemesterOverview >> gtWeekFor: aView [
 	<gtView>
-	^ aView columnedTree
+	^ aView columnedList
 		priority: 15;
 		title: 'weeks';
+		column: 'wk' text: [ :each | each name ] width: 40 ;
+		column: 'date' text: [ :each | each startDate ];
 		items: [self weeks]
 		
 		
 ]
 
 { #category : 'accessing' }
+SemesterOverview >> name [
+	^ name
+]
+
+{ #category : 'accessing' }
 SemesterOverview >> name: aString [ 
 	name := aString
+]
+
+{ #category : 'as yet unclassified' }
+SemesterOverview >> printOn: aStream [
+	aStream nextPutAll: self name
 ]
 
 { #category : 'accessing' }
