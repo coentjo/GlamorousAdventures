@@ -8,7 +8,7 @@ ByteString >> asExperiment [
 	 if not existing: return FileRef, so user can (choose to) create path in inspector. "
 
 	^ self asFileReference
-		ifExists: [ :fileRef | ResExperiment onDir: fileRef ]
+		ifExists: [ :fileRef | fileRef asExperiment ]
 		ifAbsent: [ :fileRef | 
 			self inform: 'Path does not exist: Create if you want'.
 			fileRef ]
