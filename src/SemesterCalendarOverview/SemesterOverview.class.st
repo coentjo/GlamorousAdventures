@@ -94,11 +94,12 @@ SemesterOverview >> addWeek: weekNr startingat: startDate [
 
 { #category : 'datums' }
 SemesterOverview >> gtWeekFor: aView [
-	<gtView>
+	<gtView>.
 	^ aView columnedList
 		priority: 15;
 		title: 'weeks';
 		column: 'wk' text: [ :each | each name ] width: 40 ;
+		column: 'd' text: [ :each | each startDate yyyymmdd ] width: 80;
 		column: 'date' text: [ :each | each startDate ];
 		items: [self weeks]
 		
