@@ -23,6 +23,11 @@ ResObject >> asBrItemsProvider [
 ]
 
 { #category : 'as yet unclassified' }
+ResObject >> basename [
+	^ self resObjectDir basename
+]
+
+{ #category : 'as yet unclassified' }
 ResObject >> childNames [
 	"the children of a Program are Projects"
 
@@ -38,6 +43,13 @@ ResObject >> childNames [
 		ifFound: [ :foundFile | Character lf split: foundFile contents ]
 		ifNone: [ OrderedCollection new ]."
 	
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> contextColor [
+	^ self resObjectDir exists
+		ifTrue: [ self resultBackgroundColor ]
+		ifFalse: [ Color red ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -115,18 +127,39 @@ ResObject >> gtActionWebBrowseFor: anAction [
 ]
 
 { #category : 'as yet unclassified' }
-ResObject >> gtChildrenFor: aView [
+ResObject >> gtChildrenEditFor: aView [
 	<gtView>
 	self researchObjectChildrenFile ensureCreateFile.
 	^ aView forward
 		title: 'Edit Children';
-		priority: 12;
+		priority: 13;
 		object: self researchObjectChildrenFile;
 		view: #gtContentsFor:;
 		actionButtonLabel: 'Create'
 			tooltip: 'Create children that don''t exist yet.'
 			action: [ self researchChildren
 					do: [ :each | each name asFileReference ensureCreateDirectory ] ]
+]
+
+{ #category : 'as yet unclassified' }
+ResObject >> gtChildrenFor: aView [
+	<gtView>
+	self researchChildren.
+	^ aView columnedList
+		title: 'Children';
+		priority: 12;
+		items: [self researchChildren];
+		column: 'exists' text: [ :path |
+			'X' asRopedText background: (
+				path contextColor)
+		] width: 25 ;
+		column: 'path' text: [ :path |
+			path asRopedText 
+		]
+"		actionButtonLabel: 'Create'
+			tooltip: 'Create children that don''t exist yet.'
+			action: [ self researchChildren
+					do: [ :each | each name asFileReference ensureCreateDirectory ] ] "
 ]
 
 { #category : 'as yet unclassified' }
@@ -151,7 +184,6 @@ ResObject >> gtLiveFor: aView [
 				fromRightCenter;
 				toLeftCenter;
 				connectFrom: #yourself
-					"toAll: [ :each | each researchChildren ]."
 					toAll: [ :each | allNodes select: [ :node | each researchChildren contains: [:n | n name = node name]]].
 			mondrian layout horizontalDominanceTree
 				nodesAlignment: GtGradTreeNodesCenterAlignment new;
@@ -180,7 +212,7 @@ ResObject >> itemContainer: anItem [
 		addChild: (BrVerticalPane new
 				vMatchParent;
 				hExact: 15;
-				background: anItem resultBackgroundColor);
+				background: (anItem contextColor));
 		addChild: (self itemInfoContainer: anItem)
 ]
 
@@ -193,7 +225,7 @@ ResObject >> itemInfoContainer: anItem [
 			clipChildren: false.
 	container
 		addChild: (BrEditor new
-				text: anItem name asRopedText;
+				text: anItem basename asRopedText;
 				aptitude: BrGlamorousRegularEditorAptitude).
 	^ container
 ]

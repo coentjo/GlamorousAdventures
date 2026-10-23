@@ -272,7 +272,7 @@ Research >> itemContainer: anItem [
 		addChild: (BrVerticalPane new
 				vMatchParent;
 				hExact: 15;
-				background: anItem resultBackgroundColor);
+				background: (anItem resObjectDir exists ifTrue: [anItem resultBackgroundColor] ifFalse: [Color red]));
 		addChild: (self itemInfoContainer: anItem)
 ]
 
@@ -285,7 +285,7 @@ Research >> itemInfoContainer: anItem [
 			clipChildren: false.
 	container
 		addChild: (BrEditor new
-				text: anItem name asRopedText;
+				text: anItem basename asRopedText;
 				aptitude: BrGlamorousRegularEditorAptitude).
 	^ container
 ]
