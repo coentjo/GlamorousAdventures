@@ -1,5 +1,5 @@
 Class {
-	#name : 'SemesterWeek',
+	#name : 'FontysSemesterWeek',
 	#superclass : 'Object',
 	#instVars : [
 		'name',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : 'accessing' }
-SemesterWeek class >> named: weekNr startingAt: startDate [ 
+FontysSemesterWeek class >> named: weekNr startingAt: startDate [ 
 	^ self new
 		name: weekNr;
 		startingAt: startDate;
@@ -18,26 +18,26 @@ SemesterWeek class >> named: weekNr startingAt: startDate [
 ]
 
 { #category : 'as yet unclassified' }
-SemesterWeek >> name [
+FontysSemesterWeek >> name [
 	^ name
 ]
 
 { #category : 'accessing' }
-SemesterWeek >> name: weekNr [ 
+FontysSemesterWeek >> name: weekNr [ 
 	name := weekNr
 ]
 
 { #category : 'as yet unclassified' }
-SemesterWeek >> printOn: aStream [
+FontysSemesterWeek >> printOn: aStream [
 	aStream nextPutAll: self name asString
 ]
 
 { #category : 'accessing' }
-SemesterWeek >> startDate [
+FontysSemesterWeek >> startDate [
 	^ startDate
 ]
 
 { #category : 'accessing' }
-SemesterWeek >> startingAt: aStartDate [ 
+FontysSemesterWeek >> startingAt: aStartDate [ 
 	startDate := aStartDate
 ]

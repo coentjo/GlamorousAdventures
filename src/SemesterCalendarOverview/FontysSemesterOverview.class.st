@@ -1,5 +1,5 @@
 Class {
-	#name : 'SemesterOverview',
+	#name : 'FontysSemesterOverview',
 	#superclass : 'Object',
 	#instVars : [
 		'weeks',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : 'accessing' }
-SemesterOverview class >> datums202602 [
+FontysSemesterOverview class >> datums202602 [
 	"which week-nr starts at which Date (Monday)"
 	| mondayWk01 |
 	mondayWk01 := Date year: 2026 month: 02 day: 9 .
@@ -40,7 +40,7 @@ SemesterOverview class >> datums202602 [
 ]
 
 { #category : 'datums' }
-SemesterOverview class >> datums202608 [
+FontysSemesterOverview class >> datums202608 [
 	"which week-nr starts at which Date (Monday)"
 	| mondayWk01 |
 	mondayWk01 := Date year: 2026 month: 08 day: 31 .
@@ -70,7 +70,7 @@ SemesterOverview class >> datums202608 [
 ]
 
 { #category : 'datums' }
-SemesterOverview class >> for202602_vj [
+FontysSemesterOverview class >> for202602_vj [
 	"Feb202602 - Jul2026, vj: Voorjaar"
 	^self new
 		useDateScheme: self datums202602 ; 
@@ -79,7 +79,7 @@ SemesterOverview class >> for202602_vj [
 ]
 
 { #category : 'datums' }
-SemesterOverview class >> for202608_nj [
+FontysSemesterOverview class >> for202608_nj [
 	"Fontys year overview"
 	"Aug202608 - Jan2027, nj: Najaar"
 	^self new
@@ -89,12 +89,12 @@ SemesterOverview class >> for202608_nj [
 ]
 
 { #category : 'accessing' }
-SemesterOverview >> addWeek: weekNr startingat: startDate [
-	self weeks add: (SemesterWeek named: weekNr startingAt: startDate)
+FontysSemesterOverview >> addWeek: weekNr startingat: startDate [
+	self weeks add: (FontysSemesterWeek named: weekNr startingAt: startDate)
 ]
 
 { #category : 'datums' }
-SemesterOverview >> gtWeekFor: aView [
+FontysSemesterOverview >> gtWeekFor: aView [
 	<gtView>
 	^ aView columnedList
 		priority: 15;
@@ -108,27 +108,27 @@ SemesterOverview >> gtWeekFor: aView [
 ]
 
 { #category : 'accessing' }
-SemesterOverview >> name [
+FontysSemesterOverview >> name [
 	^ name
 ]
 
 { #category : 'accessing' }
-SemesterOverview >> name: aString [ 
+FontysSemesterOverview >> name: aString [ 
 	name := aString
 ]
 
 { #category : 'as yet unclassified' }
-SemesterOverview >> printOn: aStream [
+FontysSemesterOverview >> printOn: aStream [
 	aStream nextPutAll: self name
 ]
 
 { #category : 'accessing' }
-SemesterOverview >> useDateScheme: aDateScheme [
+FontysSemesterOverview >> useDateScheme: aDateScheme [
 	aDateScheme
 		keysAndValuesDo: [ :weekNr :startDate | self addWeek: weekNr startingat: startDate ]
 ]
 
 { #category : 'accessing' }
-SemesterOverview >> weeks [
+FontysSemesterOverview >> weeks [
 	^ weeks ifNil: [weeks := OrderedCollection new]
 ]
