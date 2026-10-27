@@ -80,6 +80,7 @@ SemesterOverview class >> for202602_vj [
 
 { #category : 'datums' }
 SemesterOverview class >> for202608_nj [
+	"Fontys year overview"
 	"Aug202608 - Jan2027, nj: Najaar"
 	^self new
 		useDateScheme: self datums202608 ; 
@@ -94,7 +95,7 @@ SemesterOverview >> addWeek: weekNr startingat: startDate [
 
 { #category : 'datums' }
 SemesterOverview >> gtWeekFor: aView [
-	<gtView>.
+	<gtView>
 	^ aView columnedList
 		priority: 15;
 		title: 'weeks';
